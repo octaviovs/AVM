@@ -724,6 +724,15 @@ namespace MVPG52 {
         protected global::System.Web.UI.WebControls.TextBox ResumenExploracion;
         
         /// <summary>
+        /// Control autocompleteDiagnostico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox autocompleteDiagnostico;
+        
+        /// <summary>
         /// Control ListaDiagnosticio.
         /// </summary>
         /// <remarks>

@@ -116,18 +116,21 @@ namespace MVPG52
                 Datos.fk_EspecialistaControl = usuariologeado.Numero_Control;
                 Datos.pk_Reservacion = miAlumno.pk_Reservacion; // numero de reservacion de la cita
 
-                Datos.ResumenAntecedente = ResumenAntecedente.Text; //Interrogatorio al paciente
 
-                if (Talla.Text != "") Datos.Talla = float.Parse(Talla.Text); else Datos.Talla = 0;
-                if (Temperatura.Text != "") Datos.Temperatura = float.Parse(Temperatura.Text); else Datos.Temperatura = 0;
-                if (Peso.Text != "") Datos.Peso = float.Parse(Peso.Text); else Datos.Peso = 0;
-                if (RtimoCardiaco.Text != "") Datos.RitmoCardiaco = float.Parse(RtimoCardiaco.Text); else Datos.RitmoCardiaco = 0;
-                if (Presion1.Text != "" && Presion.Text != "") Datos.PresionArterial = float.Parse(Presion.Text) * float.Parse(Presion1.Text); else Datos.PresionArterial = 0;
+                Datos.ResumenAntecedente = ResumenAntecedente.Text; //Interrogatorio al paciente
+                Datos.Temperatura = (Talla.Text != "") ? float.Parse(Talla.Text) :  0;
+                Datos.Temperatura = (Temperatura.Text != "") ? float.Parse(Temperatura.Text) : 0;
+                Datos.Peso= (Peso.Text != "")? float.Parse(Peso.Text): 0;
+                Datos.RitmoCardiaco= (RtimoCardiaco.Text != "")? float.Parse(RtimoCardiaco.Text) :  0;
+                Datos.PresionArterial= (Presion1.Text != "" && Presion.Text != "")? float.Parse(Presion.Text) / float.Parse(Presion1.Text):  0;
                 Datos.ExploracionFisica = ResumenExploracion.Text;
 
-                Datos.Diagnostico = ListaDiagnosticio.SelectedValue;
+                Datos.Diagnostico = (autocompleteDiagnostico.Text!="")?autocompleteDiagnostico.Text:"Sin especificacion";
+
                 Datos.PlanDeTratamiento = PlanTratamiento.Text;
-                if (DiasReposo.Text != "") Datos.DiasReposo = int.Parse(DiasReposo.Text); else Datos.DiasReposo = 0;
+
+                Datos.DiasReposo= (DiasReposo.Text != "")? int.Parse(DiasReposo.Text): Datos.DiasReposo = 0;
+            
 
                 //Odontograma
                 if (NumeroDiente.Text != "") Datos.Diente = int.Parse(NumeroDiente.Text); else Datos.Diente = 0;
@@ -135,7 +138,6 @@ namespace MVPG52
                 Datos.TratatmientoOdontograma = TratamientoDiente.Text;
                 Datos.ObservacionesOdontograma = ComentarioDiente.Text;
                 //Pisolcogo
-            
                 if (HyperLinkPsicologo.Visible)
                 {
                     Datos.ResumenAntecedente = DiagnosticoPsicologo.Text; //diagnositico
@@ -392,10 +394,17 @@ namespace MVPG52
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            WConsultaVista.ReguistrarConsulta(NewConsulta);
-            Response.Redirect("/AgendaCitas.aspx", true);// no direcciona a la pagina default de la master}
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Listo');", true);
-        }
+            if (NewConsulta != null){
+                WConsultaVista.ReguistrarConsulta(NewConsulta);
+                Response.Redirect("/AgendaCitas.aspx", true);// no direcciona a la pagina default de la master}
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Listo');", true);
+            }
+            else {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Faltan datos');", true);
+            }
+           
+        }//Realizar consulta
+
         protected void Imprimir_Click(object sender, EventArgs e)
         {
             DateTime fechaHoy = DateTime.Now;

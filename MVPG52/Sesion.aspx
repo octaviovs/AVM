@@ -13,7 +13,7 @@
     <style type="text/css">
         .modal {
             width: 35% !important;
-            max-height: 57% !important;
+            max-height: 55% !important;
         }
 
         .modal-form-row {

@@ -376,11 +376,7 @@ namespace MVPG52
                 //Open PDF Document to write data 
                 pdfDoc.Open();
 
-
-
-
                 cadenaFinal += "<h4> © Universidad Politécnica de Tulancingo.  Calle Ingenierías # 100. Col. Huapalcalco, Tulancingo, Hidalgo, México. C.P. 43629, Teléfono: 01(775) 75 5 82 02, Fax: 01(775) 75 5 83 21 </h5>";
-
 
                 //Assign Html content in a string to write in PDF 
                 string strContent = cadenaFinal;

@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NuevaConsulta.aspx.cs" Inherits="MVPG52.NuevaConsulta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <style>
         input.textbox, select, textarea {
             max-width: none;
@@ -10,15 +14,12 @@
 
         text.textbox {
             color: black;
-            
         }
 
         label {
             font-size: Medium;
             color: black;
-           
         }
-        
     </style>
 
 
@@ -69,7 +70,7 @@
                                 <div class="row ">
                                     <h4>1.-Alimentación diaria </h4>
                                     <div class=" col s12 ">
-                                        <asp:TextBox ID="m1" runat="server" ReadOnly="True" Font-Size="Medium" ForeColor="black" ></asp:TextBox>
+                                        <asp:TextBox ID="m1" runat="server" ReadOnly="True" Font-Size="Medium" ForeColor="black"></asp:TextBox>
                                     </div>
                                 </div>
                                 <%-- P2 M --%>
@@ -97,7 +98,7 @@
                                 <div class="row">
                                     <h4>5.-Frecuencia de consumo de tabaco</h4>
                                     <div class="input-field col s12" style="top: 0">
-                                        <asp:TextBox ID="m5" runat="server" ReadOnly="True" Font-Size="Medium" ForeColor="black" ></asp:TextBox>
+                                        <asp:TextBox ID="m5" runat="server" ReadOnly="True" Font-Size="Medium" ForeColor="black"></asp:TextBox>
                                     </div>
                                 </div>
                                 <%-- P6 M --%>
@@ -597,6 +598,22 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4" style="font-size: medium">
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">textsms</i>
+
+
+                                <asp:TextBox runat="server" ID="autocompleteDiagnostico" class="autocomplete">
+
+                                </asp:TextBox>
+
+                                <label for="autocomplete-input">Autocomplete</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4" style="font-size: medium">
                         <asp:DropDownList ID="ListaDiagnosticio" runat="server" Font-Size="Medium"></asp:DropDownList>
                     </div>
                     <div class="col-md-2">
@@ -740,22 +757,34 @@
     </div>
     <!--FIN Contenido de tabs-->
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 
     <script type="text/javascript">
-
-        $('input.autocomplete').autocomplete({
-            data: {
-                "Apple": null,
-                "Microsoft": null,
-                "Google": 'http://placehold.it/250x250'
-            },
-            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-            onAutocomplete: function (val) {
-                // Callback function when value is autcompleted.
-            },
-            minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+        $(document).ready(function () {
+            //Autocomplete
+            $(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://raw.githubusercontent.com/octaviovs/CIE10/master/cie10.json',
+                    success: function (response) {
+                        var myArray = $.parseJSON(response);
+                        var renglones = {};
+                        alert(myArray.length);
+                        for (var i = 0; i < myArray.length; i++) {
+                            renglones[myArray[i].d] = null;
+                        }
+                        alert(renglones);
+                        $('input.autocomplete').autocomplete({
+                            data: renglones,
+                            limit: 13, // The max amount of results that can be shown at once. Default: Infinity.
+                        });
+                    }
+                });
+            });
         });
     </script>
+
 
 </asp:Content>
 
