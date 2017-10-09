@@ -733,24 +733,6 @@ namespace MVPG52 {
         protected global::System.Web.UI.WebControls.TextBox autocompleteDiagnostico;
         
         /// <summary>
-        /// Control ListaDiagnosticio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListaDiagnosticio;
-        
-        /// <summary>
-        /// Control pre11ResP1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox pre11ResP1;
-        
-        /// <summary>
         /// Control PanelAgregarLista.
         /// </summary>
         /// <remarks>

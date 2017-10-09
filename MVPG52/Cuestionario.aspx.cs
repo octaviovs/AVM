@@ -103,7 +103,12 @@ namespace MVPG52
                         Panelpre14Res1.Visible = false;
                     }
 
-
+                    //Activacion de acuse
+                    if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
+                        PanelAcuse.Visible = true;
+                    else
+                        PanelAcuse.Visible = false;
+                        
 
                 }
             }

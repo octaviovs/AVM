@@ -53,7 +53,6 @@ namespace MVPG52
                     WConsultaVista.ListarHistorialMedico(9, DatosPasienteConsulta);//Obtenemos el historial de citas del alumno
                     WConsultaVista.ListarOdontograma(14, miAlumno.alu_NumControl);    // llenado del odontograma
 
-                    LlenadoComboEnfermedades(ListaDiagnosticio, 12);//Llenado de enfermedades para consulta
 
                     LlenadoALumno();
                 }
@@ -388,8 +387,9 @@ namespace MVPG52
         protected void ButtonOtro_Click(object sender, EventArgs e)
         {
             // WConsultaVista.InsertarEnfermedad(10, txtOtro.Text);
-            ListaDiagnosticio.Items.Clear();
-            LlenadoComboEnfermedades(ListaDiagnosticio, 12);
+            //ListaDiagnosticio.Items.Clear();
+            //LlenadoComboEnfermedades(ListaDiagnosticio, 12);
+            //se comento por que el auto llenado de enfermedaddes esta listo
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -432,7 +432,7 @@ namespace MVPG52
                             "<td colspan=2><b>Presión:</b> " + Presion.Text + "/" + Presion1.Text + "</td></tr>" +
                             "<tr><td colspan=2><b>Temperatura: </b>" + Temperatura.Text + "</td></tr>" +
                             "<TR><TD colspan=4><b>Resumen Exploración Física:</b> " + ResumenExploracion.Text + "</TD></TR>" +
-                            "<TR><TD colspan=4><b>Diagnóstico:</b> " + ListaDiagnosticio.SelectedItem.ToString() + "</TD></TR>" +
+                            "<TR><TD colspan=4><b>Diagnóstico:</b> " + autocompleteDiagnostico.Text + "</TD></TR>" +
                             "<TR><TD colspan=4><b>Plan de tratamiento:</b> " + PlanTratamiento.Text + "</TD></TR>" +
                             "<tr><TD colspan=2><b>Días de reposo: </b>" + DiasReposo.Text + "</TD><TD colspan=2><b>Tipo de usuario: </b>" + TipoDeConsulta.Text + "</TD></tr>" +
                             "</TABLE><br/><br/><br/><br/>";

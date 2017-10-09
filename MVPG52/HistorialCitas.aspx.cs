@@ -61,8 +61,6 @@ namespace MVPG52
                 DatosFisicos.Visible = false;
                 HyperLinkPsicologo.Visible = true;
             }
-               
-
             vistaConsulta.ListarHistorialMedico(9, DatosPasienteConsulta);
 
         }
@@ -82,7 +80,6 @@ namespace MVPG52
             get;
             private set;
         }
-
         #region IConsulta
 
         public void Mensaje(string Mensaje, int tipo)
@@ -99,9 +96,6 @@ namespace MVPG52
                     obj.fk_Alumno = txtMatricula.Text;
                     obj.TipoUsuario = Convert.ToInt32(DropDownListOpciones.SelectedValue);// Se establece el tipo de historial en esta propiedad 
                 }
-                else {
-
-                  }
                 return obj;
                
             }

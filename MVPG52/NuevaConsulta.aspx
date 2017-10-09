@@ -2,10 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <style>
         input.textbox, select, textarea {
             max-width: none;
@@ -597,33 +594,8 @@
                     <h3>Diagnóstico</h3>
                 </div>
                 <div class="row">
-                    <div class="col-md-4" style="font-size: medium">
-
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">textsms</i>
-
-
-                                <asp:TextBox runat="server" ID="autocompleteDiagnostico" class="autocomplete">
-
-                                </asp:TextBox>
-
-                                <label for="autocomplete-input">Autocomplete</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4" style="font-size: medium">
-                        <asp:DropDownList ID="ListaDiagnosticio" runat="server" Font-Size="Medium"></asp:DropDownList>
-                    </div>
-                    <div class="col-md-2">
-                        <%--<div class="switch " runat="server">
-                            <label>--%>
-                        <asp:CheckBox ID="pre11ResP1" runat="server" Visible="false" />
-                        <%--          <span class="lever"></span>
-                                <h4 ></h4>
-                            </label>
-                        </div>--%>
+                    <div class="col s12 materialize-textarea " >
+                        <asp:TextBox runat="server" ID="autocompleteDiagnostico" class="autocomplete" Font-Size="Medium" CssClass="materialize-textarea"> </asp:TextBox>
                     </div>
                     <asp:Panel ID="PanelAgregarLista" runat="server" Visible="false">
                         <div class="col-md-2">
@@ -770,11 +742,11 @@
                     success: function (response) {
                         var myArray = $.parseJSON(response);
                         var renglones = {};
-                        alert(myArray.length);
+
                         for (var i = 0; i < myArray.length; i++) {
                             renglones[myArray[i].d] = null;
                         }
-                        alert(renglones);
+
                         $('input.autocomplete').autocomplete({
                             data: renglones,
                             limit: 13, // The max amount of results that can be shown at once. Default: Infinity.
