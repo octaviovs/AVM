@@ -18,12 +18,10 @@
             <li>
                 <div class="collapsible-header"><i class="material-icons">person_pin</i>Ayuda (?)</div>
                 <div class="collapsible-body  jumbotron  card-panel teal white">
-                    <p style="font-size: medium">Estados de reservación: </p>
-                    <p style="font-size: medium; padding-left:2em">1: Consulta activa. </p>
-                    <p style="font-size: medium ; padding-left:2em">3: Cita de urgencia. </p>
+                   
                     <p style="font-size: medium">Operaciones: </p>
                     <p style="font-size: medium ; padding-left:2em"> (!) Cancelar cita. </p>
-                     <p style="font-size: medium ; padding-left:2em"> (✓) Dar consulta. </p>
+                    <p style="font-size: medium ; padding-left:2em"> (✓) Dar consulta. </p>
                 </div>
             </li>
         </ul>
@@ -62,7 +60,11 @@
                         <asp:Label ID="Label3" Visible="false" runat="server" Text='<%# Eval("Nombre")%>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-
+                 <asp:TemplateField ShowHeader="False" HeaderText=" ">
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" Visible="false" runat="server" Text='<%# Eval("Usuario")%>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>

@@ -196,5 +196,7 @@ namespace MVPG52
                 Response.Redirect("/CancelarCita.aspx", true);// no direcciona a la pagina default de la master
             }
         }
+
+       
     }
 }

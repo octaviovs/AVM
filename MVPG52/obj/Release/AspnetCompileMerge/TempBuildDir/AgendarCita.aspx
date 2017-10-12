@@ -1,7 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgendarCita.aspx.cs" Inherits="MVPG52.AgendarCita" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgendarCita.aspx.cs" Inherits="MVPG52.AgendarCita"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+ 
+    <style type="text/css">
+        select {
+        font-size:medium;
+        
+        }
 
+        label {
+        font-size:medium;
+        }
+        input {
+           font-size:medium;
+        }
+      
+
+
+    </style>
     <div class="jumbotron  card-panel #fafafa grey lighten-5 ">
         <nav class="" data-target="red" style="top: auto; z-index: auto">
             <div class="nav-wrapper #2196f3 blue">
@@ -23,23 +39,30 @@
                     </div>
                 </li>
             </ul>
-            <br />
             <div class="row">
-                <div class="col-md-4  " style="font-size: x-large">
-                    <asp:DropDownList ID="DropDownListESpecialidades" AutoPostBack="true" runat="server" OnSelectedIndexChanged="Button1_Click1">
-                        <asp:ListItem Selected="False" Value="0" Text="Seleccione área." Enabled="true"></asp:ListItem>
+                <div class="col-md-4  " style="font-size: medium">
+                    Selección de área
+                    <div class="" style="font-size: medium">
 
-                    </asp:DropDownList>
+                        <asp:DropDownList ID="DropDownListESpecialidades" AutoPostBack="true" runat="server" OnSelectedIndexChanged="Button1_Click1" Font-Size=" x-large">
+
+                            <asp:ListItem Selected="False" Value="0" Text="Seleccione área" Enabled="true"></asp:ListItem>
+                        </asp:DropDownList>
+
+
+
+                    </div>
                 </div>
                 <div class="col-md-4 center">
-
                     <asp:Button ID="ButtonFiltrar" runat="server" Text="Filtrar" OnClick="Button1_Click1" CssClass="waves-effect waves-light btn-large small " Font-Size="Medium" Visible="false" />
                 </div>
-                <div class="col-md-4 ">
+                <div class="col-md-4 " style="font-size: medium">
+                    Selección de especialista
                     <asp:DropDownList ID="DropDownListEspecialista" runat="server" CssClass="left-align"></asp:DropDownList>
                 </div>
             </div>
         </div>
+
         <div class="jumbotron ">
             <ul class="collapsible " data-collapsible="accordion" style="font-size: x-large">
                 <li>
@@ -47,34 +70,50 @@
                     <div class="collapsible-body  jumbotron  card-panel teal white">
                         <p style="font-size: medium">1.-Selecciona una fecha NO anterior a la de hoy. </p>
                         <p style="font-size: medium">2.-Verifique disponibilidad. </p>
+                        <p style="font-size: medium">3.-Seleccina el tipo de usuario, Personal o Familiar(Mamá,Papá,Hermanos,etc). </p>
                     </div>
                 </li>
             </ul>
 
             <br />
-            <div class="row">
+            <div class="row" style="font-size: medium">
                 <div class="col-md-4">
-                    <asp:TextBox ID="TextBoxFecha" runat="server" class="datepicker"></asp:TextBox>
+                    Fecha
+                    <asp:TextBox ID="TextBoxFecha" runat="server" class="datepicker" Font-Size="Medium"></asp:TextBox>
                 </div>
                 <div class="col-md-4 center">
                     <asp:Button ID="ButtonFechaDispobible" runat="server" Text="Disponibilidad" OnClick="Button2_Click2" CssClass="waves-effect waves-light btn " Font-Size="Medium" />
                 </div>
                 <div class="col-md-4">
+                    Horario
                     <asp:DropDownList ID="DropDownListHorario" runat="server"></asp:DropDownList>
                 </div>
             </div>
-            
-            <br />
-            <div class="row">
-                <div class="col-md-4 ">
+           
+
+           
+            ¿Para quién es la consulta? 
+
+                <div class="row" style="font-size: medium">
+                     
+                    <div class="switch col s4">
+                        Personal
+                        <label>
+                            <asp:CheckBox ID="TipoUsuario" runat="server" />
+                            <span class="lever"></span>
+                        </label>
+                        Familiar
+                    </div>
+
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-7">
+                        <asp:Button ID="ButtonReuistrarConsulta" runat="server" Text="                  Agendar                  " OnClick="ButtonReuistrarConsulta_Click" CssClass="waves-effect waves-light btn-large #ffc107 amber small " Font-Size="Medium"  />
+                    </div>
                 </div>
-                <div class="col-md-4 center-align">
-                    <asp:Button ID="ButtonReuistrarConsulta" runat="server" Text="Agendar" OnClick="ButtonReuistrarConsulta_Click" CssClass="waves-effect waves-light btn-large #ffc107 amber small " Font-Size="Medium" />
-                </div>
-                <div class="col-md-4">
-                </div>
+
+              
+               
             </div>
         </div>
-    </div>
-
 </asp:Content>

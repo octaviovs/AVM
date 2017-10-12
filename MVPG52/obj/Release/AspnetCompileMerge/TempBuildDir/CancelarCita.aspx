@@ -13,18 +13,16 @@
             </div>
         </nav>
         <br />
-         <ul class="collapsible " data-collapsible="accordion" style="font-size: x-large">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">person_pin</i>Instrucciones para cancelar cita.</div>
-                    <div class="collapsible-body  jumbotron  card-panel teal white">
-                        <p style="font-size: medium">1.-Localice la cita que cancelará. </p>
-                        <p style="font-size: medium">2.-Presione el botón con el signo (!) </p>
-                    </div>
-                </li>
-            </ul>
-            <br />  
-
-
+        <ul class="collapsible " data-collapsible="accordion" style="font-size: x-large">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">person_pin</i>Instrucciones para cancelar cita.</div>
+                <div class="collapsible-body  jumbotron  card-panel teal white">
+                    <p style="font-size: medium">1.-Localice la cita que cancelará. </p>
+                    <p style="font-size: medium">2.-Presione el botón con el signo (!) </p>
+                </div>
+            </li>
+        </ul>
+        <br />
 
         <div class="row">
             <div>

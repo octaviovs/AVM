@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,6 +117,7 @@
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controles\SubirArchivo.ascx" />
     <Content Include="Cuestionario.aspx" />
     <Content Include="DefaultD.aspx" />
     <Content Include="Desarroladores.aspx" />
@@ -239,6 +241,13 @@
     </Compile>
     <Compile Include="ConsultarCita.aspx.designer.cs">
       <DependentUpon>ConsultarCita.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubirArchivo.ascx.cs">
+      <DependentUpon>SubirArchivo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\SubirArchivo.ascx.designer.cs">
+      <DependentUpon>SubirArchivo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Cuestionario.aspx.cs">
       <DependentUpon>Cuestionario.aspx</DependentUpon>

@@ -10,8 +10,10 @@
     <title><%: Page.Title %> Sistema compensatorio</title>
 
     <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/bootstrap.css" rel="stylesheet">
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
     <!--Import materialize.css-->
     <link href="Content/materialize.min.css" rel="stylesheet" />
     <%--<link href="Content/bootstrap.min.css" rel="stylesheet" />--%>
@@ -41,8 +43,6 @@
             height: 150px;
         }
 
-        icons {
-        }
 
         .material-icons {
             color: red;
@@ -80,7 +80,7 @@
             <li>
                 <div class="userView">
                     <div class="background">
-                        <img src="imag/master/fondojpg.jpg" />
+                        <img src="imag/master/fondoRojo.jpg" />
                     </div>
                     <a href="#!user">
                         <img class="circle" src="imag/Roles/alumno.png"></a>
@@ -112,20 +112,23 @@
                             <div class="divider"></div>
                         </li>
                         <li>
-                            <asp:LinkButton ID="LinkButtonCuestionarioAlumno" runat="server" OnClick="LinkButton2_Click1"><i class="material-icons" style="float:inherit" >question_answer</i>Cuestionario </asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonCuestionarioAlumno" runat="server" OnClick="LinkButton2_Click1"><i class="material-icons" style="float:inherit" >folder_shared</i>Cuestionario </asp:LinkButton>
                         </li>
+                        <li>
+                            <div class="divider"></div>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButtonChat" runat="server"><i class="material-icons" style="float:inherit" >question_answer</i>Chat </asp:LinkButton>
+                        </li>
+                        <li>
+                            <div class="divider"></div>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButtonSALIR_Click"><i class="material-icons" style="float:inherit" >email</i>Salir </asp:LinkButton></li>
                         <li>
                             <div class="divider"></div>
                         </li>
 
-                        <li>
-                            <div class="divider"></div>
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButtonSALIR_Click"><i class="material-icons" style="float:inherit" >settings_power  </i>Salir </asp:LinkButton></li>
-                        <li>
-                            <div class="divider"></div>
-                        </li>
 
                     </div>
                 </asp:Panel>
@@ -155,6 +158,12 @@
                         </li>
                         <li>
                             <asp:LinkButton ID="LinkButtonHistorialCitas" runat="server" OnClick="LinkButtonHistorialCitas_Click"><i class="material-icons" style="float:inherit" >view_list</i>Historial Citas </asp:LinkButton></li>
+                        <li>
+                            <div class="divider"></div>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButtonChatMedico" runat="server"><i class="material-icons" style="float:inherit" >email</i>Chat </asp:LinkButton></li>
+                        <li>
                         <li>
                             <div class="divider"></div>
                         </li>
@@ -190,7 +199,7 @@
                 <div class="col s10">
                     <!-- Prom Content 2 goes here -->
                     <div>
-                        <h1 class="white-text big text-darken-2 valign-wrapper brand-logo center">Sistema de Servicios Médicos 
+                        <h1 class="white-text big text-darken-2 valign-wrapper brand-logo center">Sistema de Servicios de Salud
                             <!-- Logo menu -->
                             <a class="col s2 m2 offset-m2 16 offset-l5">
                                 <u class="lighten-5 z-depth-5">
@@ -209,32 +218,61 @@
             </div>
         </div>
 
+
+
+        <%-- Aviso Legal --%>
+        <div id="aviso" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Aviso de Privacidad</h4>
+                <p>
+                    Los datos personales recabados serán protegidos y serán incorporados y tratados en este formulario de contacto, con fundamento en los artículos 37, 38 y 42 de la Ley de Transparencia y Acceso a la Información Pública Gubernamental para el Estado de Hidalgo así como los artículos 24 y 25 de su Reglamento cuya finalidad es recibir quejas, sugerencias, observaciones, o cualquier otro tipo de comentario dirigido a esta secretaria o respecto de los contenidos publicados en este sitio y podrán ser transmitidos a la(s) persona(s) u organismo(s) que está dirigida o que por la naturaleza de la solicitud deba involucrarse con la finalidad de dar respuesta o gestionar un conjunto de actividades para dar respuesta a la solicitud recibida en este formulario, además de otras transmisiones previstas en la Ley.
+                     La Universidad Politécnica de Tulancingo (UPT) es la responsable del funcionamiento de este sistema informático. Así mismo el titular de los datos personales podrá ejercer su derecho a conocer, corregir, actualizar o suprimir la información. Calle Ingenierías # 100. Col. Huapalcalco, Tulancingo, Hidalgo, México. C.P. 43629, Teléfono: 01(775) 75 5 82 02
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Regresar</a>
+            </div>
+        </div>
+        <%-- Aviso Legal --%>
+
         <%-- Baner bajo --%>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <footer class="page-footer #c62828 red darken-3 z-depth-5">
-                <div class="footer-copyright">
-                    <div class="row col s12">
-                        <div class="col s4 push-s9">
-                            &nbsp;<img src="imag/universidad/logo.png" style="width: 50%" class="responsive-img" />
-                        </div>
-                        <div class="col s4 m4 ">
 
-                            <div class="container">
-                                © Universidad Politéctica de Tulancingo.
-                   <p><%: DateTime.Now.Year %> Versión 1.0</p>
-                            </div>
+            <footer class="page-footer #b71c1c red darken-4">
+                <div>
+                    <div class="row">
+                        <div class="col s2 center-align">
+                            <img src="imag/universidad/logox.png" style="width: 70%" />
                         </div>
-                        <div class="col s4 pull-s7">
-                            <img src="imag/universidad/logoUpt.png" style="width: 35%" />
+                        <div class="col l4 s4">
+                            <h4 class="white-text">Sistemas Compensatorios</h4>
+                            <p class="grey-text text-lighten-4">© Universidad Politécnica de Tulancingo.  Calle Ingenierías # 100. Col. Huapalcalco, Hidalgo, México C.P. 43629, Teléfono: 01(775) 75 5 82 02.</p>
+                        </div>
+                        <div class="col l2 offset-l1 s1">
+                            <h4 class="white-text">Enlaces</h4>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="http://www.upt.edu.mx/">upt.edu.mx</a></li>
+                                <li><a class="grey-text text-lighten-3" href="http://201.116.38.19/conect_uptvxxi/default.asp">Conect</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#aviso">Aviso legal</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col s2 center-align">
+                                <img src="imag/universidad/logo.png" style="width: 90%" class="responsive-img" />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-              
+                <div class="footer-copyright">
+                    <div class="container">
+                       © 2017 Universidad Politécnica de Tulancingo
+            <a class="grey-text text-lighten-4 right" href="/Desarroladores.aspx">Webmasters</a>
+                    </div>
+                </div>
             </footer>
+
         </div>
 
     </form>
@@ -307,6 +345,7 @@
             },
             minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
         });
+
     </script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cuestionario.aspx.cs" Inherits="MVPG52.Cuestionario" %>
 
+<%@ Register Src="~/Controles/SubirArchivo.ascx" TagPrefix="uc1" TagName="SubirArchivo" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style type="text/css">
         label {
             color: black;
-            font-size:medium;
+            font-size: medium;
         }
 
         img {
@@ -42,24 +45,20 @@
             position: fixed;
         }
     </style>
-
     <br />
     <br />
-
-
 
     <asp:Panel ID="PanelAviso" runat="server">
         <div class="  card-panel  accent-1#ffffff white">
             <div class="jumbotron">
                 <h1>Aviso de privacidad</h1>
                 <p class="lead">
-                     Se podrá contestar sólo una vez, sea cuidadoso.
+                    Se podrá contestar sólo una vez, sea cuidadoso.
                 </p>
                 <p>
                     El objetivo del llenado es registrar los antecedentes del paciente y generar su historial clínico.
                 </p>
             </div>
-
             <div class="row">
                 <div class="center-align">
                     <asp:Button ID="ButtonAceptarTerminos" runat="server" Text="Aceptar" CssClass="card-panel #2196f3 blue white-text " OnClick="ButtonAceptarTerminos_Click" />
@@ -76,7 +75,7 @@
                 <li class="active "><a data-toggle="tab" href="#menu0" class="card-panel #2196f3 blue white-text">Médico</a></li>
                 <li><a data-toggle="tab" href="#menu1" class="card-panel #689f38 light-green darken-2 white-text">Dental</a></li>
                 <li><a data-toggle="tab" href="#menu2" class="card-panel #f57c00 orange darken-2 white-text">Psicológico </a></li>
-                 <li><a data-toggle="tab" href="#menu3" class="card-panel #311b92 deep-purple darken-4 white-text">Acuse </a></li>
+                <li><a data-toggle="tab" href="#menu3" class="card-panel #311b92 deep-purple darken-4 white-text">Acuse </a></li>
             </ul>
 
             <div class="tab-content">
@@ -474,7 +473,7 @@
                                 <div>
                                     <div class="row">
                                         <div class="col s6">
-                                                 <h3 class="carousel-item tooltipped" data-position="top" data-tooltip="Tu regla es de 1 mes,7 dias más 7 dias menos">19.-¿Tu regla es regular? </h3>
+                                            <h3 class="carousel-item tooltipped" data-position="top" data-tooltip="Tu regla es de 1 mes,7 dias más 7 dias menos">19.-¿Tu regla es regular? </h3>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -490,7 +489,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <a class="carousel-item tooltipped" data-position="top" data-tooltip="Tu regla es de 1 mes,7 dias más 7 dias menos" >
+                                        <a class="carousel-item tooltipped" data-position="top" data-tooltip="Tu regla es de 1 mes,7 dias más 7 dias menos">
                                             <img src="imag/iconos/ayuda.jpg" /></a>
                                     </div>
                                 </div>
@@ -1501,21 +1500,27 @@
                         <div class="jumbotron card-panel  accent-1#ffffff white">
                             <h1 class="center-align">Impresión de acuse</h1>
                             <br />
-                            <div class="row" >
+                            <div class="row">
                                 <div class=" right-align">
-                                        <asp:Button ID="ButtonAcuse" runat="server" Text="Imprimir" CssClass="#311b92 deep-purple darken-4 white-text " />
+                                    <asp:Button ID="ButtonAcuse" runat="server" Text="Imprimir" CssClass="#311b92 deep-purple darken-4 white-text " OnClick="ButtonAcuse_Click" />
                                 </div>
                             </div>
                             <br />
-                            
+
                         </div>
                     </asp:Panel>
-           
+
                 </div>
             </div>
         </div>
     </asp:Panel>
 
+    <div>
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <asp:Button ID="btnUpload" Text="Upload" runat="server" OnClick="UploadFile" />
+        <br />
+        <asp:Label ID="lblMessage" ForeColor="Green" runat="server" />
+    </div>
 
 
 

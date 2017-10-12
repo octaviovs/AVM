@@ -10,6 +10,11 @@ using Core.Model;
 using Core.Presenter;
 using Core.View;
 
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
 namespace MVPG52
 {
     public partial class Cuestionario : System.Web.UI.Page, ICuestionario, IAlumno
@@ -37,7 +42,7 @@ namespace MVPG52
             objLoggerinf = (CAlumno)Session["UsuarioLogeado"];
 
 
-            if (objLoggerinf != null)
+            if (objLoggerinf != null && objLoggerinf.alu_Rol==1) //se valida el objeto y el rol para asegurar si identidad
             {
                 if (!IsPostBack)
                 {
@@ -45,13 +50,14 @@ namespace MVPG52
                     {
                         PanelPreguntasMujer.Visible = false;
                     }
-                    //Desactivar paneles
+                 
                     LlenadoComboGenerico(pre3, 10);                 // listado de sangre
                     LlenadoComboGenerico(DropDownListPM7, 11);      // listado de alerguas
                     LlenadoComboGenerico(DropDownListPM8, 12);      //listado de enfermedades
                     LlenadoComboGenerico(DropDownListpre14Res1, 13);//Listado de cirujias
                     LlenadoComboGenerico(DropDownListpre13Res1, 14);//Listado de anticonceptivo
-
+                     //Desactivar paneles
+                     //Panel medico
                     if (objLoggerinf.alu_E1 == 1)
                     {
                         PanelMedico.Visible = false;
@@ -62,7 +68,7 @@ namespace MVPG52
                         PanelMedico.Visible = true;
                         PanelAvisoMedico.Visible = false;
                     }
-
+                    //Panel denatal
                     if (objLoggerinf.alu_E2 == 1)
                     {
                         PanelDentista.Visible = false;
@@ -73,7 +79,7 @@ namespace MVPG52
                         PanelDentista.Visible = true;
                         PanelAvisoDental.Visible = false;
                     }
-
+                    //Panel psicologico
                     if (objLoggerinf.alu_E3 == 1)
                     {
                         PanelPsicologo.Visible = false;
@@ -84,6 +90,7 @@ namespace MVPG52
                         PanelPsicologo.Visible = true;
                         PanelAvisoPsicologo.Visible = false;
                     }
+                    //Hacer visible el cuestionarnio
                     if (objLoggerinf.alu_E1 == 2  || objLoggerinf.alu_E1 == 1)//si acepto o contesto la encuenta se activara el panel
                     {
                         PanelCuestionarnio.Visible = true;
@@ -94,7 +101,9 @@ namespace MVPG52
                         PanelAviso.Visible = true;
                         PanelCuestionarnio.Visible = false;
                     }
-                    if (pre14Res1.Checked==true)
+
+                    //Pregunta de opcion multiple 
+                    if (pre14Res1.Checked == true)
                     {
                         Panelpre14Res1.Visible = true;
                     }
@@ -105,11 +114,14 @@ namespace MVPG52
 
                     //Activacion de acuse
                     if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
+                    {
                         PanelAcuse.Visible = true;
-                    else
+                        EstadoDeBotones(false);
+                    }
+                    else {
                         PanelAcuse.Visible = false;
-                        
-
+                        EstadoDeBotones(true);
+                    } 
                 }
             }
             else
@@ -121,6 +133,11 @@ namespace MVPG52
         }
 
         #region Metodos de guardar consuta
+        private void EstadoDeBotones(bool Estatus) {
+            ButtonAgregarDental.Enabled = Estatus;
+            ButtonAgregarMedico.Enabled = Estatus;
+            ButtonAgregarPsicologo.Enabled = Estatus;
+        }
         protected void ButtonAgregarDental_Click(object sender, EventArgs e)
         {
             bool Estado = true;
@@ -1505,7 +1522,7 @@ namespace MVPG52
             {
                 foreach (CCuestionario item in listaDatos)
                 {
-                    Combo.Items.Add(new ListItem(item.Descripcion, item.Id.ToString()));
+                    Combo.Items.Add(new System.Web.UI.WebControls.ListItem(item.Descripcion, item.Id.ToString()));
                 }
             }
         }
@@ -1703,7 +1720,94 @@ namespace MVPG52
 
         }
 
-      
+        protected void UploadFile(object sender, EventArgs e)
+        {
+            try
+            {
+                string folderPath = Server.MapPath("~/PDFS/");
+
+                //Check whether Directory (Folder) exists.
+                if (!Directory.Exists(folderPath))
+                {
+                    //If Directory (Folder) does not exists. Create it.
+                    Directory.CreateDirectory(folderPath);
+                }
+
+              
+                //Save the File to the Directory (Folder).
+                FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName));
+
+                //Display the success message.
+                lblMessage.Text = Path.GetFileName(FileUpload1.FileName) + " has been uploaded.";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void ButtonAcuse_Click(object sender, EventArgs e)
+        {
+            DateTime fechaHoy = DateTime.Now;
+            string fecha = fechaHoy.ToShortDateString();
+            string cadenaFinal = "";
+            string path = Server.MapPath("/IMAG/universidad/Acuse.png");
+            cadenaFinal += "<img src='" + path + "' Height='150' Width='500' />";
+            cadenaFinal += "<br><br>";
+            cadenaFinal += "Fecha: "+fecha;//Tenemos que sacar la fecha
+            cadenaFinal += "<br><br>";
+            cadenaFinal += "El alumno: " + objLoggerinf.alu_Nombre + ", con la matícula: " + objLoggerinf.alu_NumControl + ", ha llenado correctamente los cuestionarios.";
+            cadenaFinal += "<br><br><br><br>";
+            string nom = "AcuseDeCuestionario" + objLoggerinf.alu_NumControl;
+            imprimirPDF(cadenaFinal, nom);
+        }
+
+        private void imprimirPDF(string cadenaFinal, string nom)
+        {
+            Document pdfDoc = new Document(PageSize.A4, 10, 10, 10, 10);
+
+            try
+            {
+                PdfWriter.GetInstance(pdfDoc, System.Web.HttpContext.Current.Response.OutputStream);
+
+                //Open PDF Document to write data 
+                pdfDoc.Open();
+
+
+
+
+                cadenaFinal += "<h4> © Universidad Politécnica de Tulancingo.  Calle Ingenierías # 100. Col. Huapalcalco, Tulancingo, Hidalgo, México. C.P. 43629, Teléfono: 01(775) 75 5 82 02, Fax: 01(775) 75 5 83 21 </h5>";
+
+                //Assign Html content in a string to write in PDF 
+                string strContent = cadenaFinal;
+
+                //Read string contents using stream reader and convert html to parsed conent 
+                var parsedHtmlElements = HTMLWorker.ParseToList(new StringReader(strContent), null);
+
+                //Get each array values from parsed elements and add to the PDF document 
+                foreach (var htmlElement in parsedHtmlElements)
+                    pdfDoc.Add(htmlElement as IElement);
+
+                //Close your PDF 
+                pdfDoc.Close();
+
+                Response.ContentType = "application/pdf";
+
+                //Set default file Name as current datetime 
+                Response.AddHeader("content-disposition", "attachment; filename=" + nom + ".pdf");
+                System.Web.HttpContext.Current.Response.Write(pdfDoc);
+
+
+                Response.Flush();
+                Response.End();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+        }
     }
 
     }
