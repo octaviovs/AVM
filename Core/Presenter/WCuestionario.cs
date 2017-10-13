@@ -43,6 +43,7 @@ namespace Core.Presenter
                     case 2: BolRegistro = objCuestionario.ReguistroMedico(objCuestionario); break;
                     case 3: BolRegistro = objCuestionario.ReguistroPsicologico(objCuestionario); break;
                     case 4: BolRegistro = objCuestionario.AceptarTerminos(objCuestionario); break;
+                    case 5: BolRegistro = objCuestionario.AceptarArchivo(objCuestionario); break;
                     default: BolRegistro = false; break;
                 }
                 if (BolRegistro == true) {

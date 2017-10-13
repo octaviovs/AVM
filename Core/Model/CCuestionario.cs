@@ -192,6 +192,15 @@ namespace Core.Model
 
             return false;
         }
+        public bool AceptarArchivo(CCuestionario obj) {
+            List<SqlParameter> lstParametros = new List<SqlParameter>();
+            lstParametros.Add(new SqlParameter("@Op ", SqlDbType.Int) { Value = 9 });
+            lstParametros.Add(new SqlParameter("@fk_alumno", SqlDbType.NVarChar, 40) { Value = obj.fk_alumno });
+            objManagerBD = new ManagerBD();
+            if (objManagerBD.UpdateData("MiCuestionario", lstParametros.ToArray()))
+                return true;
+            return false;
+        }
         #endregion
 
         //Metodo de evalua por opcion(opcion) que tipo de consulta hacia el cuestionario se desea seleccionar

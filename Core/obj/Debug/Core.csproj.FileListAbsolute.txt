@@ -11,3 +11,11 @@ C:\Users\octav\Documents\1.-UniversidadPolitecnicaDeTulancingo\A_Hospital\Core\o
 C:\Users\octav\Documents\1.-UniversidadPolitecnicaDeTulancingo\A_Hospital\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
 C:\Users\octav\Documents\1.-UniversidadPolitecnicaDeTulancingo\A_Hospital\Core\obj\Debug\Core.dll
 C:\Users\octav\Documents\1.-UniversidadPolitecnicaDeTulancingo\A_Hospital\Core\obj\Debug\Core.pdb
+C:\Users\octav\Desktop\A_Hospital\Core\bin\Debug\Core.dll
+C:\Users\octav\Desktop\A_Hospital\Core\bin\Debug\Core.pdb
+C:\Users\octav\Desktop\A_Hospital\Core\bin\Debug\itextsharp.dll
+C:\Users\octav\Desktop\A_Hospital\Core\bin\Debug\itextsharp.xml
+C:\Users\octav\Desktop\A_Hospital\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\octav\Desktop\A_Hospital\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\octav\Desktop\A_Hospital\Core\obj\Debug\Core.dll
+C:\Users\octav\Desktop\A_Hospital\Core\obj\Debug\Core.pdb

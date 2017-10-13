@@ -10,7 +10,9 @@ using Core.Model;
 using Core.Presenter;
 using Core.View;
 
+
 using System.IO;
+using System.IO.MemoryMappedFiles;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
@@ -26,7 +28,7 @@ namespace MVPG52
         WAlumno WmiAlumno;
 
         Panel PanelCues=new Panel();
-
+  
 
         List<CCuestionario> listaDatos = new List<CCuestionario>(); //Lista para almacenar los datos de las listas ccuestionario
         protected void Page_Load(object sender, EventArgs e)
@@ -56,9 +58,34 @@ namespace MVPG52
                     LlenadoComboGenerico(DropDownListPM8, 12);      //listado de enfermedades
                     LlenadoComboGenerico(DropDownListpre14Res1, 13);//Listado de cirujias
                     LlenadoComboGenerico(DropDownListpre13Res1, 14);//Listado de anticonceptivo
-                     //Desactivar paneles
-                     //Panel medico
-                    if (objLoggerinf.alu_E1 == 1)
+                                                                    //Desactivar paneles
+
+                    //Hacer visible el cuestionarnio
+                    /*
+                     1 los cuestionarnios e1 e2 e3 estan en 0
+                     2 al aceptar los terminos e123 =10 ya puede llenar los cuestionarios
+                     3 se llenaron los 3 cuestionarnios e1=1 e2=1 e3=1
+                     3 se subio el archivo e123=2
+                        ahora se desactiva subir archivo y
+                     4 cuando e123=3 se desactica cuestionarnio y subir archivo y se activa acuse
+                     */
+
+
+                    //Se aceptan los terminos y condiciones
+                    if (objLoggerinf.alu_E1 !=0 && objLoggerinf.alu_E2 != 0 && objLoggerinf.alu_E3 != 0)
+                    {
+                        PanelCuestionarnio.Visible = true;
+                        PanelAviso.Visible = false;
+                    }
+                    else
+                    {
+                        PanelCuestionarnio.Visible = false;
+                        PanelAviso.Visible = true;
+                    }
+
+
+                    //Panel médico
+                    if (objLoggerinf.alu_E1 !=1 || objLoggerinf.alu_E1 != 2)
                     {
                         PanelMedico.Visible = false;
                         PanelAvisoMedico.Visible = true;
@@ -67,9 +94,10 @@ namespace MVPG52
                     {
                         PanelMedico.Visible = true;
                         PanelAvisoMedico.Visible = false;
+                        
                     }
                     //Panel denatal
-                    if (objLoggerinf.alu_E2 == 1)
+                    if ( objLoggerinf.alu_E2 != 1 || objLoggerinf.alu_E2 != 2)
                     {
                         PanelDentista.Visible = false;
                         PanelAvisoDental.Visible = true;
@@ -78,9 +106,11 @@ namespace MVPG52
                     {
                         PanelDentista.Visible = true;
                         PanelAvisoDental.Visible = false;
+                       
+                    
                     }
                     //Panel psicologico
-                    if (objLoggerinf.alu_E3 == 1)
+                    if ( objLoggerinf.alu_E3 != 1 || objLoggerinf.alu_E3 != 2)
                     {
                         PanelPsicologo.Visible = false;
                         PanelAvisoPsicologo.Visible = true;
@@ -90,17 +120,26 @@ namespace MVPG52
                         PanelPsicologo.Visible = true;
                         PanelAvisoPsicologo.Visible = false;
                     }
-                    //Hacer visible el cuestionarnio
-                    if (objLoggerinf.alu_E1 == 2  || objLoggerinf.alu_E1 == 1)//si acepto o contesto la encuenta se activara el panel
+
+                    if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
                     {
-                        PanelCuestionarnio.Visible = true;
-                        PanelAviso.Visible = false;
+                        PanelSubirArchivo.Visible = true;
+                    }
+                    else {
+                        PanelSubirArchivo.Visible = false;
+                    }
+
+                    //Activacion de acuse
+                    if (objLoggerinf.alu_E1 == 2 && objLoggerinf.alu_E2 == 2 && objLoggerinf.alu_E3 == 2)
+                    {
+                        PanelAcuse.Visible = true;
                     }
                     else
                     {
-                        PanelAviso.Visible = true;
-                        PanelCuestionarnio.Visible = false;
+                        PanelAcuse.Visible = false;
                     }
+
+
 
                     //Pregunta de opcion multiple 
                     if (pre14Res1.Checked == true)
@@ -112,16 +151,7 @@ namespace MVPG52
                         Panelpre14Res1.Visible = false;
                     }
 
-                    //Activacion de acuse
-                    if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
-                    {
-                        PanelAcuse.Visible = true;
-                        EstadoDeBotones(false);
-                    }
-                    else {
-                        PanelAcuse.Visible = false;
-                        EstadoDeBotones(true);
-                    } 
+                    
                 }
             }
             else
@@ -137,6 +167,7 @@ namespace MVPG52
             ButtonAgregarDental.Enabled = Estatus;
             ButtonAgregarMedico.Enabled = Estatus;
             ButtonAgregarPsicologo.Enabled = Estatus;
+            btnUpload.Enabled = Estatus;
         }
         protected void ButtonAgregarDental_Click(object sender, EventArgs e)
         {
@@ -1717,34 +1748,49 @@ namespace MVPG52
             WmiAlumno.ActualizarDatosDeAlumno(UsuarioActulizar);// se actuliza la variable de sesion
             Session.Clear();// limpiamos la sesion
             Session.Add("UsuarioLogeado", objLoggerinf);
-
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void UploadFile(object sender, EventArgs e)
         {
-            try
+            string carpeta = Server.MapPath("~/Files/");
+           // carpeta = Path.Combine(Request.PhysicalApplicationPath, "Files");
+            if (FileUpload1.PostedFile.FileName == "")
             {
-                string folderPath = Server.MapPath("~/PDFS/");
-
-                //Check whether Directory (Folder) exists.
-                if (!Directory.Exists(folderPath))
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('No se seleccino archivo');", true);
+            }
+            else {
+                string extencion = Path.GetExtension(FileUpload1.PostedFile.FileName);
+                switch (extencion.ToLower())
                 {
-                    //If Directory (Folder) does not exists. Create it.
-                    Directory.CreateDirectory(folderPath);
+                    case ".pdf": break;
+                    case ".jpg": break;
+                    default:
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Formato no correcto   >:v');", true);
+                        return;       
                 }
+                try
+                {
+                    string archivo = Path.GetFileName(FileUpload1.PostedFile.FileName);
+                    FileUpload1.PostedFile.SaveAs(carpeta + objLoggerinf.alu_NumControl + extencion);
+                    /*
+                     Se necesita un objeto Cuestionarnio el cual encapusel la pk_alumno
+                     se puede agregar cualquier objeto siempre y cuando tenga la pk_alumno
+                     5=opcion de modificar
+                     */
+                    WmiCuestionario.ReguistrarCuestionario(NewCuestionarioDental, 5);
+                    WmiAlumno.ActualizarDatosDeAlumno(UsuarioActulizar);
 
-              
-                //Save the File to the Directory (Folder).
-                FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName));
-
-                //Display the success message.
-                lblMessage.Text = Path.GetFileName(FileUpload1.FileName) + " has been uploaded.";
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally {
+                    Response.Redirect(Request.RawUrl);
+                }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+          
         }
 
         protected void ButtonAcuse_Click(object sender, EventArgs e)
