@@ -72,60 +72,60 @@ namespace MVPG52
 
 
                     //Se aceptan los terminos y condiciones
-                    if (objLoggerinf.alu_E1 !=0 && objLoggerinf.alu_E2 != 0 && objLoggerinf.alu_E3 != 0)
+                    if (objLoggerinf.alu_E1 ==0 && objLoggerinf.alu_E2 == 0 && objLoggerinf.alu_E3 == 0)
+                    {                       
+                        PanelCuestionarnio.Visible = false;
+                        PanelAviso.Visible = true;
+                    }
+                    else
                     {
                         PanelCuestionarnio.Visible = true;
                         PanelAviso.Visible = false;
                     }
-                    else
-                    {
-                        PanelCuestionarnio.Visible = false;
-                        PanelAviso.Visible = true;
-                    }
-
 
                     //Panel médico
-                    if (objLoggerinf.alu_E1 !=1 || objLoggerinf.alu_E1 != 2)
-                    {
-                        PanelMedico.Visible = false;
-                        PanelAvisoMedico.Visible = true;
-                    }
-                    else
+                    if (objLoggerinf.alu_E1 == 10 )
                     {
                         PanelMedico.Visible = true;
                         PanelAvisoMedico.Visible = false;
-                        
-                    }
-                    //Panel denatal
-                    if ( objLoggerinf.alu_E2 != 1 || objLoggerinf.alu_E2 != 2)
-                    {
-                        PanelDentista.Visible = false;
-                        PanelAvisoDental.Visible = true;
                     }
                     else
+                    {
+                        PanelMedico.Visible = false;
+                        PanelAvisoMedico.Visible = true;
+
+
+                    }
+                    //Panel denatal
+                    if (objLoggerinf.alu_E2 == 10 )
                     {
                         PanelDentista.Visible = true;
                         PanelAvisoDental.Visible = false;
-                       
-                    
-                    }
-                    //Panel psicologico
-                    if ( objLoggerinf.alu_E3 != 1 || objLoggerinf.alu_E3 != 2)
-                    {
-                        PanelPsicologo.Visible = false;
-                        PanelAvisoPsicologo.Visible = true;
                     }
                     else
                     {
+                        PanelDentista.Visible = false;
+                        PanelAvisoDental.Visible = true;
+
+                    }
+                    //Panel psicologico
+                    if (objLoggerinf.alu_E3 == 10)
+                    {
                         PanelPsicologo.Visible = true;
                         PanelAvisoPsicologo.Visible = false;
+                    }
+                    else
+                    {
+                        PanelPsicologo.Visible = false;
+                        PanelAvisoPsicologo.Visible = true;
                     }
 
                     if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
                     {
                         PanelSubirArchivo.Visible = true;
                     }
-                    else {
+                    else
+                    {
                         PanelSubirArchivo.Visible = false;
                     }
 
@@ -151,7 +151,6 @@ namespace MVPG52
                         Panelpre14Res1.Visible = false;
                     }
 
-                    
                 }
             }
             else

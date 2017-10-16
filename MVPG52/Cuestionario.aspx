@@ -1503,10 +1503,13 @@
                             <br />
                             <asp:Panel ID="PanelSubirArchivo" runat="server" Visible="false">
                                 <div class="row">
-                                    <div>
+                                    <div class="col-md-4">
                                         <asp:FileUpload ID="FileUpload1" runat="server" />
-                                        <asp:Button ID="btnUpload" Text="Upload" runat="server" OnClick="UploadFile" />
-                                        <br />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <asp:Button ID="btnUpload" Text="Subir" runat="server" OnClick="UploadFile" />
+                                    </div>
+                                    <div class="col-md-4">
                                         <asp:Label ID="lblMessage" ForeColor="Green" runat="server" />
                                     </div>
                                 </div>

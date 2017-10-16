@@ -593,9 +593,11 @@
                 <div style="color: cornflowerblue">
                     <h3>Diagnóstico</h3>
                 </div>
+
+        
                 <div class="row">
-                    <div class="col s12 materialize-textarea " >
-                        <asp:TextBox runat="server" ID="autocompleteDiagnostico" class="autocomplete" Font-Size="Medium" CssClass="materialize-textarea"> </asp:TextBox>
+                    <div class="col s12 " >
+                        <asp:TextBox runat="server" ID="autocompleteDiagnostico" class="autocomplete" Font-Size="Medium" CssClass="autocomplete"> </asp:TextBox>
                     </div>
                     <asp:Panel ID="PanelAgregarLista" runat="server" Visible="false">
                         <div class="col-md-2">
@@ -730,7 +732,7 @@
     <!--FIN Contenido de tabs-->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
