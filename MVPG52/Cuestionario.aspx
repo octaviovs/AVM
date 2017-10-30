@@ -32,7 +32,9 @@
             font-size: 50px;
             text-align: left;
         }
-
+        .input, select, textarea {
+            max-height:none;
+}
         // Class for when element is above threshold .pin-top {
             position: relative;
         }
@@ -1496,20 +1498,20 @@
                     </asp:Panel>
                 </div>
                 <div id="menu3" class="tab-pane fade">
-                    <%-- Banner de cuestionario Dentista y preguntas --%>
+                    <%-- Banner de subir archivo --%>
                     <asp:Panel ID="Panel1" runat="server" Visible="true">
                         <div class="jumbotron card-panel  accent-1#ffffff white">
                             <h1 class="center-align">Subir archivos</h1>
                             <br />
                             <asp:Panel ID="PanelSubirArchivo" runat="server" Visible="false">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <asp:FileUpload ID="FileUpload1" runat="server" />
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <asp:Button ID="btnUpload" Text="Subir" runat="server" OnClick="UploadFile" />
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <asp:Label ID="lblMessage" ForeColor="Green" runat="server" />
                                     </div>
                                 </div>

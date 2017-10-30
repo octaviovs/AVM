@@ -46,12 +46,12 @@ namespace Core.Presenter
                 {
                     ViewConsulta.Mensaje("Cita registrado", 1);
                     //Se reguistro la cita, enviar mensaje al médico
-                  
-                    
+                    objConsulta.EmailNotificacion(objConsulta, objAlumno);//Enviar correo al especialista
+
                 }
                 else
                 {
-                    objConsulta.EmailNotificacion(objConsulta,objAlumno);//Enviar correo al especialista
+                    objConsulta.EmailNotificacion(objConsulta, objAlumno);//Enviar correo al especialista
                     ViewConsulta.Mensaje("Cita no reguistrado", 1);
                 }
             }

@@ -81,6 +81,7 @@ namespace MVPG52
                 DropDownListEspecialista.Items.Clear();
                 TextBoxFecha.Text = "";
                 DropDownListHorario.Items.Clear();
+               
                 Response.Redirect("/CancelarCita.aspx", true);// no direcciona a la pagina de citas
             }
             else
