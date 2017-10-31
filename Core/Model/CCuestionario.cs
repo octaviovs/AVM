@@ -227,7 +227,19 @@ namespace Core.Model
             }
             return ExisteDatos;
         }
-       
+
+        //Get Folio
+        public bool folio(ref DataSet objDatos, string id, int opcion)
+        {
+            bool ExisteDatos = false;
+            List<SqlParameter> lsParametros = new List<SqlParameter>();
+            lsParametros.Add(new SqlParameter("@Op", SqlDbType.Int) { Value = opcion });
+            lsParametros.Add(new SqlParameter("@fk_alumno", SqlDbType.NVarChar, 40) { Value = id });
+            objDatos = objManagerBD.GetData("MiCuestionario", lsParametros.ToArray());
+            if (objDatos.Tables.Count > 0)
+                ExisteDatos = true;
+            return ExisteDatos;
+        }
 
         #region Varibles
         //para combo

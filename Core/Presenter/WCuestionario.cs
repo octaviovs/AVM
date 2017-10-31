@@ -137,7 +137,29 @@ namespace Core.Presenter
             }
 
         }
+        public void GetFolio(string id,int opcion) {
+            
 
+            //Se utilizaran la interfaz de medico para almacenar temporalmente el folio
+            bool ExistenDatos = false;
+            DataSet dtsDatos = new DataSet();
+            CCuestionario miCuestionario = new CCuestionario();
+            if (ExisteConexion())
+            {
+                ExistenDatos = objCuestionario.folio(ref dtsDatos, id, opcion);
+                if (ExistenDatos == true)
+                {
+                    ViewCuestionario.ListadoCuestionarioMedico = dtsDatos;
+                }
+
+                else
+                    ViewCuestionario.Mensaje("No hay reguistros", 2);
+            }
+            else
+            {
+                ViewCuestionario.Mensaje("No hay conexion en red", 2);
+            }
+        }
 
     }
 }

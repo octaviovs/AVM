@@ -32,9 +32,11 @@
             font-size: 50px;
             text-align: left;
         }
+
         .input, select, textarea {
-            max-height:none;
-}
+            max-height: none;
+        }
+
         // Class for when element is above threshold .pin-top {
             position: relative;
         }
@@ -63,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="center-align">
-                    <asp:Button ID="ButtonAceptarTerminos" runat="server" Text="Aceptar" CssClass="card-panel #2196f3 blue white-text " OnClick="ButtonAceptarTerminos_Click"  />
+                    <asp:Button ID="ButtonAceptarTerminos" runat="server" Text="Aceptar" CssClass="card-panel #2196f3 blue white-text " OnClick="ButtonAceptarTerminos_Click" />
                 </div>
             </div>
         </div>
@@ -1501,8 +1503,19 @@
                     <%-- Banner de subir archivo --%>
                     <asp:Panel ID="Panel1" runat="server" Visible="true">
                         <div class="jumbotron card-panel  accent-1#ffffff white">
-                            <h1 class="center-align">Subir archivos</h1>
+                            <h2 class="center-align"><strong>Subir archivo</strong></h2>
                             <br />
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong> Instrucciones</strong>
+                                    <br />
+                                    <ul>
+                                        <li >   Solo se aceptan formato pdf.</li>
+                                        <li >   El archivo pdf debe ser menor de 1mb .</li>
+                                        <li >   Solo se podra subir una vez.</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
                             <asp:Panel ID="PanelSubirArchivo" runat="server" Visible="false">
                                 <div class="row">
                                     <div class="col-md-8">
@@ -1524,7 +1537,8 @@
                     <%-- Banner de cuestionario Dentista y preguntas --%>
                     <asp:Panel ID="PanelAcuse" runat="server" Visible="false">
                         <div class="jumbotron card-panel  accent-1#ffffff white">
-                            <h1 class="center-align">Impresión de acuse</h1>
+                            <h2 class="center-align">Impresión de acuse</h2>
+                            <p>Este acuse sirve como comprobante de realización de encuesta.</p>
                             <br />
                             <div class="row">
                                 <div class=" right-align">

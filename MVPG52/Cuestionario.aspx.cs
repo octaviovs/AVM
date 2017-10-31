@@ -28,7 +28,8 @@ namespace MVPG52
         WAlumno WmiAlumno;
 
         Panel PanelCues=new Panel();
-  
+
+        private string folio = "";
 
         List<CCuestionario> listaDatos = new List<CCuestionario>(); //Lista para almacenar los datos de las listas ccuestionario
         protected void Page_Load(object sender, EventArgs e)
@@ -1465,14 +1466,21 @@ namespace MVPG52
         {
             set
             {
-                throw new NotImplementedException();
+                if (value!=null)
+                {
+                    
+                }
             }
         }
         public DataSet ListadoCuestionarioMedico
         {
+            
             set
             {
-                throw new NotImplementedException();
+                if (value!=null)
+                {
+                    folio= value.Tables[0].Rows[0][0].ToString();
+                }
             }
         }
 
@@ -1763,7 +1771,7 @@ namespace MVPG52
                 switch (extencion.ToLower())
                 {
                     case ".pdf": break;
-                    case ".jpg": break;
+                
                     default:
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Formato no correcto   >:v');", true);
                         return;       
@@ -1794,6 +1802,9 @@ namespace MVPG52
 
         protected void ButtonAcuse_Click(object sender, EventArgs e)
         {
+            //Get id de folio
+            WmiCuestionario.GetFolio( objLoggerinf.alu_NumControl,15);
+
             DateTime fechaHoy = DateTime.Now;
             string fecha = fechaHoy.ToShortDateString();
             string cadenaFinal = "";
@@ -1804,6 +1815,7 @@ namespace MVPG52
             cadenaFinal += "<br><br>";
             cadenaFinal += "El alumno: " + objLoggerinf.alu_Nombre + ", con la matícula: " + objLoggerinf.alu_NumControl + ", ha llenado correctamente los cuestionarios.";
             cadenaFinal += "<br><br><br><br>";
+            cadenaFinal += "Folio :" +folio;
             string nom = "AcuseDeCuestionario" + objLoggerinf.alu_NumControl;
             imprimirPDF(cadenaFinal, nom);
         }
