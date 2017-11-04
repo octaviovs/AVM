@@ -130,6 +130,15 @@ namespace MVPG52 {
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonHistorialCitas;
         
         /// <summary>
+        /// Control LinkButtonArchivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButtonArchivos;
+        
+        /// <summary>
         /// Control LinkButtonChatMedico.
         /// </summary>
         /// <remarks>

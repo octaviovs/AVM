@@ -79,8 +79,8 @@
                 <li class="active "><a data-toggle="tab" href="#menu0" class="card-panel #2196f3 blue white-text">Médico</a></li>
                 <li><a data-toggle="tab" href="#menu1" class="card-panel #689f38 light-green darken-2 white-text">Dental</a></li>
                 <li><a data-toggle="tab" href="#menu2" class="card-panel #f57c00 orange darken-2 white-text">Psicológico </a></li>
-                <li><a data-toggle="tab" href="#menu3" class="card-panel #f57c00 orange darken-2 white-text">Archivos </a></li>
-                <li><a data-toggle="tab" href="#menu4" class="card-panel #311b92 deep-purple darken-4 white-text">Acuse </a></li>
+                
+                <li><a data-toggle="tab" href="#menu3" class="card-panel #311b92 deep-purple darken-4 white-text">Acuse </a></li>
             </ul>
 
             <div class="tab-content">
@@ -1499,41 +1499,8 @@
                         </div>
                     </asp:Panel>
                 </div>
+                
                 <div id="menu3" class="tab-pane fade">
-                    <%-- Banner de subir archivo --%>
-                    <asp:Panel ID="Panel1" runat="server" Visible="true">
-                        <div class="jumbotron card-panel  accent-1#ffffff white">
-                            <h2 class="center-align"><strong>Subir archivo</strong></h2>
-                            <br />
-                            <ul class="list-group">
-                                <li class="list-group-item"><strong> Instrucciones</strong>
-                                    <br />
-                                    <ul>
-                                        <li >   Solo se aceptan formato pdf.</li>
-                                        <li >   El archivo pdf debe ser menor de 1mb .</li>
-                                        <li >   Solo se podra subir una vez.</li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                            <asp:Panel ID="PanelSubirArchivo" runat="server" Visible="false">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <asp:FileUpload ID="FileUpload1" runat="server" />
-                                    </div>
-                                    <div class="col-md-2">
-                                        <asp:Button ID="btnUpload" Text="Subir" runat="server" OnClick="UploadFile" />
-                                    </div>
-                                    <div class="col-md-2">
-                                        <asp:Label ID="lblMessage" ForeColor="Green" runat="server" />
-                                    </div>
-                                </div>
-                            </asp:Panel>
-                            <br />
-                        </div>
-                    </asp:Panel>
-                </div>
-                <div id="menu4" class="tab-pane fade">
                     <%-- Banner de cuestionario Dentista y preguntas --%>
                     <asp:Panel ID="PanelAcuse" runat="server" Visible="false">
                         <div class="jumbotron card-panel  accent-1#ffffff white">

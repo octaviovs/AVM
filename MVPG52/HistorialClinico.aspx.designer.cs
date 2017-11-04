@@ -589,6 +589,15 @@ namespace MVPG52 {
         protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
+        /// Control ltEmbed.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltEmbed;
+        
+        /// <summary>
         /// Control PanelCuestionarioMensaje.
         /// </summary>
         /// <remarks>

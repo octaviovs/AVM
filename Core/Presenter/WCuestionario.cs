@@ -160,6 +160,16 @@ namespace Core.Presenter
                 ViewCuestionario.Mensaje("No hay conexion en red", 2);
             }
         }
+        public string PDFExamen() {
+            
+            string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"700px\" height=\"500px\">";
+            embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+            embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+            embed += "</object>";
+           
+            return embed;
+
+        }
 
     }
 }

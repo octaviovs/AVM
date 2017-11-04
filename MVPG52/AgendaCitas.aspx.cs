@@ -18,6 +18,7 @@ namespace MVPG52
         WConsulta vistaConsulta;
 
         CAlumno ObjTmAlumno;// objeto donde se guardan los datos de la tabla 
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -159,6 +159,14 @@
                         <li>
                             <asp:LinkButton ID="LinkButtonHistorialCitas" runat="server" OnClick="LinkButtonHistorialCitas_Click"><i class="material-icons" style="float:inherit" >view_list</i>Historial Citas </asp:LinkButton></li>
                         <li>
+
+                            <div class="divider"></div>
+                        </li>
+
+                        <li>
+                            <asp:LinkButton ID="LinkButtonArchivos" runat="server" OnClick="LinkButtonArchivos_Click"><i class="material-icons" style="float:inherit" >attach_file</i>Archivos comúnes </asp:LinkButton></li>
+                        <li>
+                        <li>
                             <div class="divider"></div>
                         </li>
                         <li>
@@ -267,7 +275,7 @@
                 </div>
                 <div class="footer-copyright">
                     <div class="container">
-                       © 2017 Universidad Politécnica de Tulancingo
+                        © 2017 Universidad Politécnica de Tulancingo
             <a class="grey-text text-lighten-4 right" href="/Desarroladores.aspx">Webmasters</a>
                     </div>
                 </div>
@@ -333,7 +341,7 @@
         });
 
 
-        
+
 
     </script>
 </body>

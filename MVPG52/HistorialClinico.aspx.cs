@@ -32,6 +32,13 @@ namespace MVPG52
             if (usuariologeado != null)
             {
                 WmiCuestionario = new WCuestionario(this);
+
+
+
+
+                
+
+
                 if (!IsPostBack)
                 {
                   
@@ -200,6 +207,8 @@ namespace MVPG52
             if (txtId.Text != "")
             {
                 WmiCuestionario.ListarUsuarioHistorialClinico(7, txtId.Text);
+
+                VistPDF(txtId.Text);
             }
             else {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Ingrese un id valido');", true);
@@ -207,6 +216,7 @@ namespace MVPG52
            
             
         }
+        
 
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -248,7 +258,6 @@ namespace MVPG52
             string nom = "HistorialMedico" + txtId.Text;
             ImprimirPDF(cadenaFinal, nom);
         }
-
         protected void Button3_Click(object sender, EventArgs e)
         {
             string cadenaFinal = "";
@@ -321,7 +330,6 @@ namespace MVPG52
             }
 
         }
-
         protected void Button4_Click(object sender, EventArgs e)
         {
             string cadenaFinal = "";
@@ -354,6 +362,15 @@ namespace MVPG52
             cadenaFinal += "<br/><br/>";
             string nom = "HistorialPsicológico" + txtId.Text;
             ImprimirPDF(cadenaFinal, nom);
+        }
+
+        protected void VistPDF(string id)
+        {
+            string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"800px\" height=\"700px\">";
+            embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
+            embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+            embed += "</object>";
+            ltEmbed.Text = string.Format(embed, ResolveUrl("~/Files/"+id+".pdf"));
         }
     }
 }

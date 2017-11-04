@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="AgendaCitas.aspx" />
     <Content Include="AgendarCita.aspx" />
+    <Content Include="Archivos.aspx" />
     <Content Include="CancelarCita.aspx" />
     <Content Include="ChatOnline.aspx" />
     <Content Include="CitaRapida.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Archivos.aspx.cs">
+      <DependentUpon>Archivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Archivos.aspx.designer.cs">
+      <DependentUpon>Archivos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CancelarCita.aspx.cs">
       <DependentUpon>CancelarCita.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

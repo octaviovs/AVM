@@ -190,7 +190,10 @@ namespace MVPG52
         {
             Response.Redirect("/HistorialCitas.aspx", true);
         }
-
+        protected void LinkButtonArchivos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Archivos.aspx", true);
+        }
 
 
         #endregion

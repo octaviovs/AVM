@@ -66,9 +66,7 @@ namespace MVPG52
                      1 los cuestionarnios e1 e2 e3 estan en 0
                      2 al aceptar los terminos e123 =10 ya puede llenar los cuestionarios
                      3 se llenaron los 3 cuestionarnios e1=1 e2=1 e3=1
-                     3 se subio el archivo e123=2
-                        ahora se desactiva subir archivo y
-                     4 cuando e123=3 se desactica cuestionarnio y subir archivo y se activa acuse
+                     4 cuando e123=1 se desactica cuestionarnio y subir archivo y se activa acuse
                      */
 
 
@@ -121,17 +119,9 @@ namespace MVPG52
                         PanelAvisoPsicologo.Visible = true;
                     }
 
-                    if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
-                    {
-                        PanelSubirArchivo.Visible = true;
-                    }
-                    else
-                    {
-                        PanelSubirArchivo.Visible = false;
-                    }
 
                     //Activacion de acuse
-                    if (objLoggerinf.alu_E1 == 2 && objLoggerinf.alu_E2 == 2 && objLoggerinf.alu_E3 == 2)
+                    if (objLoggerinf.alu_E1 == 1 && objLoggerinf.alu_E2 == 1 && objLoggerinf.alu_E3 == 1)
                     {
                         PanelAcuse.Visible = true;
                     }
@@ -167,7 +157,7 @@ namespace MVPG52
             ButtonAgregarDental.Enabled = Estatus;
             ButtonAgregarMedico.Enabled = Estatus;
             ButtonAgregarPsicologo.Enabled = Estatus;
-            btnUpload.Enabled = Estatus;
+      
         }
         protected void ButtonAgregarDental_Click(object sender, EventArgs e)
         {
@@ -1758,47 +1748,7 @@ namespace MVPG52
             Response.Redirect(Request.RawUrl);
         }
 
-        protected void UploadFile(object sender, EventArgs e)
-        {
-            string carpeta = Server.MapPath("~/Files/");
-           // carpeta = Path.Combine(Request.PhysicalApplicationPath, "Files");
-            if (FileUpload1.PostedFile.FileName == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('No se seleccino archivo');", true);
-            }
-            else {
-                string extencion = Path.GetExtension(FileUpload1.PostedFile.FileName);
-                switch (extencion.ToLower())
-                {
-                    case ".pdf": break;
-                
-                    default:
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Formato no correcto   >:v');", true);
-                        return;       
-                }
-                try
-                {
-                    string archivo = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                    FileUpload1.PostedFile.SaveAs(carpeta + objLoggerinf.alu_NumControl + extencion);
-                    /*
-                     Se necesita un objeto Cuestionarnio el cual encapusel la pk_alumno
-                     se puede agregar cualquier objeto siempre y cuando tenga la pk_alumno
-                     5=opcion de modificar
-                     */
-                    WmiCuestionario.ReguistrarCuestionario(NewCuestionarioDental, 5);
-                    WmiAlumno.ActualizarDatosDeAlumno(UsuarioActulizar);
-
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally {
-                    Response.Redirect(Request.RawUrl);
-                }
-            }
-          
-        }
+   
 
         protected void ButtonAcuse_Click(object sender, EventArgs e)
         {
