@@ -37,6 +37,9 @@ namespace MVPG52
         protected void UploadFile(object sender, EventArgs e)
         {
             string carpeta = Server.MapPath("~/Files/");
+            string nombreReal =  TextBoxNombre.Text!="" ? TextBoxNombre.Text : FileUpload1.PostedFile.FileName;
+        
+
             // carpeta = Path.Combine(Request.PhysicalApplicationPath, "Files");
             if (FileUpload1.PostedFile.FileName == "")
             {
@@ -56,7 +59,7 @@ namespace MVPG52
                 try
                 {
                     string archivo = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                    FileUpload1.PostedFile.SaveAs(carpeta + "credencial" + extencion);
+                    FileUpload1.PostedFile.SaveAs(carpeta + nombreReal + extencion);
                 }
                 catch (Exception)
                 {
@@ -65,6 +68,7 @@ namespace MVPG52
                 finally
                 {
                     Response.Redirect(Request.RawUrl);
+                    TextBoxNombre.Text = "";
                 }
             }
 

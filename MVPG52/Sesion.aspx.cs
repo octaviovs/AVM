@@ -100,7 +100,8 @@ namespace MVPG52
                     objLoggerinf.alu_Rol = Convert.ToInt32(value.alu_Rol);
                     objLoggerinf.alu_Nombre = Convert.ToString(value.alu_Nombre);
                     objLoggerinf.alu_ApePaterno = Convert.ToString(value.alu_ApePaterno);
-                    objLoggerinf.alu_Sexo = Convert.ToString(value.alu_Sexo);          
+                    objLoggerinf.alu_Sexo = Convert.ToString(value.alu_Sexo);
+                    objLoggerinf.alu_Carrera = Convert.ToString(value.alu_Carrera);
                 }
                 else {
                     objLoggerinf = null;

@@ -378,7 +378,7 @@ namespace MVPG52
         }
         private void LlenadoALumno()
         {
-            TipoDeConsulta.Text = miAlumno.alu_aFojasCertificado;
+            TipoDeConsulta.Text = miAlumno.tipo_usuario;
             LabelNombreAlumno.Text = miAlumno.alu_Nombre + " " + miAlumno.alu_ApePaterno + " " + miAlumno.alu_ApeMaterno;
             LabelMatriculaAlumno.Text = miAlumno.alu_NumControl;
 

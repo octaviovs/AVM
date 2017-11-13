@@ -60,6 +60,9 @@ namespace Core.Presenter
                         objAuthenticatedUser.alu_ApePaterno = datLoggerUserInformation.Tables[0].Rows[0][7].ToString();
                         objAuthenticatedUser.alu_ApeMaterno = datLoggerUserInformation.Tables[0].Rows[0][8].ToString();
                         objAuthenticatedUser.alu_Sexo = datLoggerUserInformation.Tables[0].Rows[0][9].ToString();
+                        objAuthenticatedUser.alu_FechaNacimiento = datLoggerUserInformation.Tables[0].Rows[0][10].ToString();
+                        objAuthenticatedUser.alu_Carrera= datLoggerUserInformation.Tables[0].Rows[0][11].ToString();
+
                         ViewAlumno.UsuarioLogeado = objAuthenticatedUser;
                     }
                     catch (Exception)
@@ -100,6 +103,8 @@ namespace Core.Presenter
                     objAuthenticatedUser.alu_ApePaterno = datLoggerUserInformation.Tables[0].Rows[0][7].ToString();
                     objAuthenticatedUser.alu_ApeMaterno = datLoggerUserInformation.Tables[0].Rows[0][8].ToString();
                     objAuthenticatedUser.alu_Sexo = datLoggerUserInformation.Tables[0].Rows[0][9].ToString();
+                    objAuthenticatedUser.alu_FechaNacimiento = datLoggerUserInformation.Tables[0].Rows[0][10].ToString();
+                    objAuthenticatedUser.alu_Carrera = datLoggerUserInformation.Tables[0].Rows[0][11].ToString();
                     ViewAlumno.UsuarioActulizar = objAuthenticatedUser;
                 }
                 else

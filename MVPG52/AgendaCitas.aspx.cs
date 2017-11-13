@@ -185,7 +185,7 @@ namespace MVPG52
                 vistaConsulta.Datosalumno(11, matri);
 
                 ObjTmAlumno.pk_Reservacion = id;// de la reservacion
-                ObjTmAlumno.alu_aFojasCertificado = TipoUsuario; //agregamos el tipo de usuario
+                ObjTmAlumno.tipo_usuario = TipoUsuario; //agregamos el tipo de usuario
 
                 Session.Add("DatosCitaAlumno",ObjTmAlumno); // se guardar los datos del alumno temporalmente
                 Response.Redirect("/NuevaConsulta.aspx", true);// no direcciona a la pagina default de la master

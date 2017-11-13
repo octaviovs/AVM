@@ -30,9 +30,8 @@ namespace Core.Model
             lstParametros.Add(new SqlParameter("@alu_Rol", SqlDbType.NVarChar, 50) { Value = objAlumno.alu_Rol });
             objDatos = objManagerBD.GetData("PAlumno", lstParametros.ToArray());
             if (objDatos.Tables.Count > 0)
-            {
                 ExisteDatos = true;
-            }
+            
             return ExisteDatos;
         }
         public bool ActualizarDatos( ref DataSet objDatos, CAlumno objAlumno)
@@ -67,36 +66,11 @@ namespace Core.Model
         public string alu_ApePaterno { get; set; }
         public string alu_ApeMaterno { get; set; }
         public string alu_Sexo { get; set; }
-        public int esp_Id { get; set; }
-        public int pes_Id { get; set; }
-        public int alu_CreditosAcum { get; set; }
-        public string alu_StatusAct { get; set; }
-        public string alu_SemestreAct { get; set; }
-        public int  per_ID_Ingreso { get; set; }
-        public string alu_inscrito { get; set; }
-        public string alu_Preinscrito { get; set; }
-        public int alu_CreditosActu { get; set; }
-        public string alu_AnioIngreso { get; set; }
-        public int per_ID_Termin { get; set; }
-        public string alu_AnioTermin { get; set; }
+       
+        public string alu_Carrera { get; set; }
+        
         public string alu_Password { get; set; }
-        public string alu_MotivoBaja { get; set; }
-        public string alu_ClaveAutorizSem { get; set; }
-        public int alu_SemProrro { get; set; }
-        public int per_ID_BajaTem { get; set; }
-        public int alu_AnioBajaTem { get; set; }
-        public string alu_FolioCertificado { get; set; }
-        public string alu_LibroCertificado { get; set; }
-        public string alu_aFojasCertificado { get; set; }
-        public string alu_FechaCertificado { get; set; }
-        public int moe_ID { get; set; }
-        public int alu_SemAutorizado { get; set; }
-        public int alu_CruceHoras { get; set; }
-        public string alu_Foto  { get; set; }
-        public string alu_FotoNombre { get; set; }
-        public bool alu_InsBProtesta { get; set; }
-        public bool alu_Bloqueado { get; set; }
-        public int tut_ID { get; set; }
         public string alu_FechaNacimiento { get; set; }
+        public string tipo_usuario { get; set; }
     }
 }

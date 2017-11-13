@@ -22,7 +22,21 @@
             </li>
         </ul>
         <br />
+        <div class="row">
+            <div class="col">
+                <h3>Poner nombre</h3>
+            </div>
+            <div class="col">
+               
 
+
+            </div>
+            <div class="col">
+
+                <asp:TextBox ID="TextBoxNombre" runat="server"></asp:TextBox>
+            </div>
+
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <asp:FileUpload ID="FileUpload1" runat="server" />
