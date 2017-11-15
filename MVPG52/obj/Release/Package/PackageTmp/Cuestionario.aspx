@@ -33,6 +33,10 @@
             text-align: left;
         }
 
+        .input, select, textarea {
+            max-height: none;
+        }
+
         // Class for when element is above threshold .pin-top {
             position: relative;
         }
@@ -75,6 +79,7 @@
                 <li class="active "><a data-toggle="tab" href="#menu0" class="card-panel #2196f3 blue white-text">Médico</a></li>
                 <li><a data-toggle="tab" href="#menu1" class="card-panel #689f38 light-green darken-2 white-text">Dental</a></li>
                 <li><a data-toggle="tab" href="#menu2" class="card-panel #f57c00 orange darken-2 white-text">Psicológico </a></li>
+                
                 <li><a data-toggle="tab" href="#menu3" class="card-panel #311b92 deep-purple darken-4 white-text">Acuse </a></li>
             </ul>
 
@@ -1494,33 +1499,28 @@
                         </div>
                     </asp:Panel>
                 </div>
+                
                 <div id="menu3" class="tab-pane fade">
                     <%-- Banner de cuestionario Dentista y preguntas --%>
                     <asp:Panel ID="PanelAcuse" runat="server" Visible="false">
                         <div class="jumbotron card-panel  accent-1#ffffff white">
-                            <h1 class="center-align">Impresión de acuse</h1>
+                            <h2 class="center-align">Impresión de acuse</h2>
+                            <p>Este acuse sirve como comprobante de realización de encuesta.</p>
                             <br />
                             <div class="row">
                                 <div class=" right-align">
-                                    <asp:Button ID="ButtonAcuse" runat="server" Text="Imprimir" CssClass="#311b92 deep-purple darken-4 white-text " />
+                                    <asp:Button ID="ButtonAcuse" runat="server" Text="Imprimir" CssClass="#311b92 deep-purple darken-4 white-text " OnClick="ButtonAcuse_Click" />
                                 </div>
                             </div>
                             <br />
-
                         </div>
                     </asp:Panel>
-
                 </div>
             </div>
         </div>
     </asp:Panel>
 
-    <div>
-        <asp:FileUpload ID="FileUpload1" runat="server" />
-        <asp:Button ID="btnUpload" Text="Upload" runat="server" OnClick="UploadFile" />
-        <br />
-        <asp:Label ID="lblMessage" ForeColor="Green" runat="server" />
-    </div>
+
 
 
 

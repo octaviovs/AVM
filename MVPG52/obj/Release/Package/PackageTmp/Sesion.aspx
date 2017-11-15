@@ -83,10 +83,6 @@
             <%-- Carrusel sesion container End  --%>
           < <footer class="page-footer #b71c1c red darken-4">
                 <div>
-
-
-
-
                     <div class="row">
                         <div class="col s2 center-align">
                             <img src="imag/universidad/logoUpt.png" style="width: 70%" />
@@ -154,7 +150,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+            
     </form>
     <!--Import jQuery before materialize.js-->
     <script src="Scripts/jquery-1.10.2.min.js"></script>

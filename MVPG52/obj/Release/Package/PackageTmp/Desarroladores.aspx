@@ -14,16 +14,16 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h2>Desarrolladores</h2>
+                <h2><em> Desarrolladores</em></h2>
 
 
 
                 <blockquote>
-                    <span class="fa fa-user"></span>M.I. José Manuel Hernández Reyes (jose.hernandez@upt.edu.mx)<br>
-                    <span class="fa fa-user"></span>Octavio Gómez Romo<br>
-                    <span class="fa fa-user"></span>Pedro Cruz Licona<br>
-                    <span class="fa fa-user"></span>Carlos ortega Riveros<br>
-                    <span class="fa fa-user"></span>Aurelio Martines Soto
+                    <span class="fa fa-user"></span>M.I. José Manuel Hernández Reyes (jose.hernandez@upt.edu.mx)<br><br>
+                    <span class="fa fa-user"></span>Octavio Gómez Romo (1530096@upt.edu.mx)<br><br>
+                    <span class="fa fa-user"></span>Pedro Cruz Licona (1530096@upt.edu.mx)<br><br>
+                    <span class="fa fa-user"></span>Carlos ortega Riveros (1530096@upt.edu.mx)<br><br>
+                    <span class="fa fa-user"></span>Aurelio Martines Soto (1530096@upt.edu.mx)
                 </blockquote>
                 <p>
             </div>
@@ -32,8 +32,8 @@
                 <h2>Lugar de desarrollo</h2>
                 <div class="image-caption">
                     <img class="materialboxed circle" width="650" src="\IMAG\universidad\IMA3.jpg">
-                    <h4>UPT</h4>
-                    <p>Centros de estudios de la Universidad Politécnica de Tulancingo.</p>
+                    <h4><strong> Fábrica de Software</strong></h4>
+                    <p> <em>Área de Ingeniería en Sistemas Computacionales.</em></p>
                 </div>
                 <p>
                 </p>

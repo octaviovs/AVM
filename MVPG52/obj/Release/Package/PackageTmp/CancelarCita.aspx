@@ -25,6 +25,8 @@
         <br />
 
         <div class="row">
+          
+            
             <div>
                 <asp:GridView ID="GridViewCitasPasiente" runat="server" CssClass="bordered  highlight responsive-table centered  z-depth-5 striped" OnSelectedIndexChanged="GridViewCitasPasiente_SelectedIndexChanged" OnPageIndexChanged="GridViewCitasPasiente_SelectedIndexChanged" OnRowCommand="GridView1_OnRowCommand">
                     <Columns>
@@ -48,4 +50,7 @@
     </div>
     <div>
     </div>
+
+
+ 
 </asp:Content>

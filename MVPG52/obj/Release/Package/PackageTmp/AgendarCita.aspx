@@ -74,7 +74,16 @@
                     </div>
                 </li>
             </ul>
-
+             <ul class="collapsible " data-collapsible="accordion" style="font-size: x-large">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">av_timer</i>Horario</div>
+                    <div class="collapsible-body  jumbotron  card-panel teal white">
+                        <p style="font-size: medium">Médico:<strong> de 9:00 AM a 2:00 PM de 3:00 PM a 5:00 pm </strong></p>
+                        <p style="font-size: medium">Dental: de<strong> 9:00 AM a 2:00 PM de 2:00 PM a 4:00 pm </strong> </p>
+                        <p style="font-size: medium">Psicólogo: de<strong> 9:00 AM a 2:00 PM de 2:00 PM a 4:00 pm  </strong></p>
+                    </div>
+                </li>
+            </ul>
             <br />
             <div class="row" style="font-size: medium">
                 <div class="col-md-4">

@@ -8,6 +8,7 @@ using Core.Model;
 using Core.View;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Core.Presenter
 {
@@ -76,6 +77,10 @@ namespace Core.Presenter
             {
                 ViewEspecialista.Mensaje("No hay conexion en red", 2);
             }
+        }
+
+        public bool ExisteArchivo(string archivo) {
+            return File.Exists(@"\Files\1530052.pdf");
         }
 
     }
