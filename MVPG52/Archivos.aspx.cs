@@ -13,34 +13,35 @@ using System.IO;
 
 namespace MVPG52
 {
-    public partial class Archivos : System.Web.UI.Page,IEspecialista
+    public partial class Archivos : System.Web.UI.Page, IEspecialista
     {
         CEspecialista objLoggerinf;
         WEspecialista vistaEspecialista;
 
+        public string carpeta;
+        public string nombreReal;
+
+        public bool bandera = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            bandera = false;
 
             objLoggerinf = (CEspecialista)Session["UsuarioLogeadoEspecialista"];
             if (objLoggerinf != null && objLoggerinf.Rol == 2)
             {
                 vistaEspecialista = new WEspecialista(this);
+                carpeta = Server.MapPath("~/Files/");//carpeta de archivos    
             }
             else
             {
                 Response.Redirect("/Sesion.aspx", true);//
-            }
+            }          
         }
- 
 
-        protected void UploadFile(object sender, EventArgs e)
+
+        public void UploadFile(object sender, EventArgs e)
         {
-            string carpeta = Server.MapPath("~/Files/");//carpeta de archivos    
-            string nombreReal =  TextBoxNombre.Text!="" ? TextBoxNombre.Text : FileUpload1.PostedFile.FileName;
-
-
-       
+            nombreReal= TextBoxNombre.Text != "" ? TextBoxNombre.Text : FileUpload1.PostedFile.FileName;
             if (FileUpload1.PostedFile.FileName == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('No se seleccino archivo');", true);
@@ -49,23 +50,17 @@ namespace MVPG52
             {
                 if (File.Exists(Server.MapPath("~/Files/" + nombreReal + ".pdf")))
                 {
-                    ClientScriptManager CSM = Page.ClientScript;
-                   
-                        string strconfirm = "if(!window.confirm('Desea reemplazarlo?')){window.location.href='Archivos.aspx'}";
-                    // CSM.RegisterClientScriptBlock(this.GetType(), "Confirm", strconfirm, false);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", strconfirm, true);
-                    if (true)
-                    {
-                      //  cargarArchivo(carpeta, nombreReal);
-                    }
+
                 }
                 else {
-                    cargarArchivo(carpeta, nombreReal);
-                  
+                    cargarArchivo();
                 }
             }
-       }
-        private void cargarArchivo(string carpeta,string nombreReal) {
+           
+        }
+
+        public void cargarArchivo() {
+
             string extencion = Path.GetExtension(FileUpload1.PostedFile.FileName);
             switch (extencion.ToLower())
             {
@@ -78,7 +73,7 @@ namespace MVPG52
             try
             {
                 string archivo = Path.GetFileName(FileUpload1.PostedFile.FileName);
-                FileUpload1.PostedFile.SaveAs(carpeta + nombreReal + extencion);
+                FileUpload1.PostedFile.SaveAs(this.carpeta + this.nombreReal + extencion);
             }
             catch (Exception)
             {
@@ -91,22 +86,12 @@ namespace MVPG52
             }
 
         }
-        public void OnConfirm(object sender, EventArgs e)
-        {
-            string confirmValue = Request.Form["confirm_value"];
-
-            if (confirmValue == "Yes")
-            {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
-            }
-            else
-            {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked NO!')", true);
-            }
-        }
+        
+      
 
         #region IEspecialista
         public CEspecialista UsuarioLogeadoEspecialista { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DataSet Empleados { set => throw new NotImplementedException(); }
 
         public void Mensaje(string Mensaje, int tipo)
         {

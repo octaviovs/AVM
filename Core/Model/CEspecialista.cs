@@ -35,6 +35,19 @@ namespace Core.Model
             }
             return ExisteDatos;
         }
+        public bool listarEmpleados(int opcion, ref DataSet objDatos, CEspecialista obj)
+        {
+            bool ExisteDatos = false;
+            List<SqlParameter> lstParametros = new List<SqlParameter>();
+            lstParametros.Add(new SqlParameter("@Op", SqlDbType.Int) { Value = opcion });
+            lstParametros.Add(new SqlParameter("@Rol", SqlDbType.NVarChar, 50) { Value = obj.Rol });
+            objDatos = objManagerBD.GetData("PConsulta", lstParametros.ToArray());
+            if (objDatos.Tables.Count > 0)
+            {
+                ExisteDatos = true;
+            }
+            return ExisteDatos;
+        }
 
         #region variables del especialista
         public string pk_Especialista { get; set; }
@@ -44,8 +57,12 @@ namespace Core.Model
         public string Contrasena { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string FechaNacimiento { get; set; }
+        public string Genero { get; set; }
+        public string Direccion { get; set; }
         public string fk_Especialidad { get; set; }
         public string Especialidad_texto { get; set; }
+        public string Telefono { get; set; }
         public int Rol { get; set; }
         public string Correo { get; set; }
 

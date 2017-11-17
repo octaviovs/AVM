@@ -79,8 +79,30 @@ namespace Core.Presenter
             }
         }
 
-        public bool ExisteArchivo(string archivo) {
-            return File.Exists(@"\Files\1530052.pdf");
+        public void ListarEmpleados(int opcion, string id, CEspecialista DatosEspecialista)
+        {
+            bool ExistenDatos = false;
+            DataSet dtsDatos = new DataSet();
+
+            if (ExisteConexion())
+            {
+                ExistenDatos = objEspecialista.listarEmpleados(opcion, ref dtsDatos,  DatosEspecialista);
+                if (ExistenDatos == true)
+                {
+                    ViewEspecialista.Empleados = dtsDatos;
+                    
+                }
+                else
+                {
+                    ViewEspecialista.Mensaje("No hay reguistros", 2);
+                }
+
+            }
+            else
+            {
+                ViewEspecialista.Mensaje("No hay conexion en red", 2);
+            }
+
         }
 
     }

@@ -175,10 +175,12 @@ namespace MVPG52
             }
         }
 
+        public DataSet Empleados { set => throw new NotImplementedException(); }
+
         #endregion
 
         #region Metodos del especialista
-         protected void LinkButtonAgendaCitas_Click(object sender, EventArgs e)
+        protected void LinkButtonAgendaCitas_Click(object sender, EventArgs e)
                 {
                     Response.Redirect("/AgendaCitas.aspx", true);
                 }

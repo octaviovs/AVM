@@ -18,6 +18,8 @@
                 <div class="collapsible-body  jumbotron  card-panel teal white">
                     <p style="font-size: medium">1.-Seleccione un archivo con extencion pdf. </p>
                     <p style="font-size: medium">2.-Debe de ser menos 1mb </p>
+                    <p style="font-size: medium">3.-Puede nombrar el archivo o dejar en blanco.</p>
+                     <p style="font-size: medium">Nota: Puede reemplazar archivos</p>
                 </div>
             </li>
         </ul>
@@ -52,17 +54,7 @@
 
 
 
-    <script type = "text/javascript">
-        function Confirm() {
-            var confirm_value = document.createElement("INPUT");
-            confirm_value.type = "hidden";
-            confirm_value.name = "confirm_value";
-            if (confirm("Do you want to save data?")) {
-                confirm_value.value = "Yes";
-            } else {
-                confirm_value.value = "No";
-            }
-            document.forms[0].appendChild(confirm_value);
-        }
+    <script type = "text/javascript" >
+       
     </script>
 </asp:Content>

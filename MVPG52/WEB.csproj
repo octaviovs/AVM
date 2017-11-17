@@ -106,6 +106,7 @@
     <Folder Include="Vistas\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddUsuario.aspx" />
     <Content Include="AgendaCitas.aspx" />
     <Content Include="AgendarCita.aspx" />
     <Content Include="Archivos.aspx" />
@@ -262,6 +263,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUsuario.aspx.cs">
+      <DependentUpon>AddUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddUsuario.aspx.designer.cs">
+      <DependentUpon>AddUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgendaCitas.aspx.cs">
       <DependentUpon>AgendaCitas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

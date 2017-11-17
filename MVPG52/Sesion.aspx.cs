@@ -155,6 +155,8 @@ namespace MVPG52
             }
         }
 
+        public DataSet Empleados { set => throw new NotImplementedException(); }
+
         #endregion
     }
 }

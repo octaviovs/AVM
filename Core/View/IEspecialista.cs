@@ -13,5 +13,6 @@ namespace Core.View
     {
         void Mensaje(string Mensaje, int tipo);
         CEspecialista UsuarioLogeadoEspecialista { set; get; }
+        DataSet Empleados { set; }
     }
 }
