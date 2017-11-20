@@ -137,7 +137,7 @@ namespace MVPG52
                     ObjTmAlumno.alu_ApePaterno = value.Tables[0].Rows[0][7].ToString();
                     ObjTmAlumno.alu_ApeMaterno = value.Tables[0].Rows[0][8].ToString();
                     ObjTmAlumno.alu_Sexo = value.Tables[0].Rows[0][9].ToString();
-                    ObjTmAlumno.alu_FechaNacimiento = value.Tables[0].Rows[0][40].ToString();
+                    ObjTmAlumno.alu_FechaNacimiento = value.Tables[0].Rows[0][11].ToString();
                 }
             }
         } 

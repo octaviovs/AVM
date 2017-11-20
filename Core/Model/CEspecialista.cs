@@ -41,13 +41,46 @@ namespace Core.Model
             List<SqlParameter> lstParametros = new List<SqlParameter>();
             lstParametros.Add(new SqlParameter("@Op", SqlDbType.Int) { Value = opcion });
             lstParametros.Add(new SqlParameter("@Rol", SqlDbType.NVarChar, 50) { Value = obj.Rol });
-            objDatos = objManagerBD.GetData("PConsulta", lstParametros.ToArray());
+            lstParametros.Add(new SqlParameter("@Numero_Control", SqlDbType.VarChar) { Value = obj.Numero_Control });
+            objDatos = objManagerBD.GetData("PEspecialista", lstParametros.ToArray());
             if (objDatos.Tables.Count > 0)
             {
                 ExisteDatos = true;
             }
             return ExisteDatos;
         }
+        public bool ConfigurarEmpleado(int opcion, CEspecialista objEspecialista)
+        {
+            List<SqlParameter> lstParametros = new List<SqlParameter>();
+            lstParametros.Add(new SqlParameter("@Op", SqlDbType.Int) { Value = opcion });
+
+
+            lstParametros.Add(new SqlParameter("@pk_Especialista", SqlDbType.VarChar) { Value = objEspecialista.pk_Especialista });
+            lstParametros.Add(new SqlParameter("@Activo", SqlDbType.VarChar) { Value = objEspecialista.Activo });
+            lstParametros.Add(new SqlParameter("@Cedula", SqlDbType.VarChar) { Value = objEspecialista.Cedula });
+            lstParametros.Add(new SqlParameter("@Numero_Control", SqlDbType.VarChar) { Value = objEspecialista.Numero_Control });
+            lstParametros.Add(new SqlParameter("@Contrasena", SqlDbType.VarChar) { Value = objEspecialista.Contrasena });
+            lstParametros.Add(new SqlParameter("@Nombre", SqlDbType.VarChar) { Value = objEspecialista.Nombre });
+            lstParametros.Add(new SqlParameter("@Apellido", SqlDbType.VarChar) { Value = objEspecialista.Apellido });
+            lstParametros.Add(new SqlParameter("@FechaNacimiento", SqlDbType.VarChar) { Value = objEspecialista.FechaNacimiento });
+            lstParametros.Add(new SqlParameter("@Genero", SqlDbType.VarChar) { Value = objEspecialista.Genero });
+            lstParametros.Add(new SqlParameter("@Direccion", SqlDbType.VarChar) { Value = objEspecialista.Direccion });
+            lstParametros.Add(new SqlParameter("@Correo", SqlDbType.VarChar) { Value = objEspecialista.Correo });
+            lstParametros.Add(new SqlParameter("@Telefono", SqlDbType.VarChar) { Value = objEspecialista.Telefono });
+            lstParametros.Add(new SqlParameter("@fk_Especialidad", SqlDbType.VarChar) { Value = objEspecialista.fk_Especialidad });
+            lstParametros.Add(new SqlParameter("@Rol", SqlDbType.VarChar) { Value = objEspecialista.Rol });
+
+            
+
+
+
+            //falta
+            objManagerBD = new ManagerBD();
+            if (objManagerBD.UpdateData("PEspecialista", lstParametros.ToArray()))
+                return true;
+            return false;
+        }
+
 
         #region variables del especialista
         public string pk_Especialista { get; set; }
