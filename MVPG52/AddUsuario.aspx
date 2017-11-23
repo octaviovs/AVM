@@ -231,10 +231,9 @@
                         </div>
                         <label for="Apellido1">Apellido</label>
                     </div>
-                    <div class="col-md-2">
+                    <div class="input-field col-md-2">
                         <asp:TextBox ID="Genero1" runat="server" Font-Size="Medium" Enabled="false" ></asp:TextBox>
-                        <div class=" ">
-                        </div>
+                      
                         <label for="Genero1">Genero</label>
                     </div>
                     <div class="col-md-4">

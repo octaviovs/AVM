@@ -84,9 +84,12 @@ namespace MVPG52
                         }
 
 
-
-                        ObjEspecialista.Genero = (DropDownListGenero.SelectedValue!="3")? DropDownListGenero.SelectedValue: (Genero1.Text== "Femenino")?"0":"1";
+                        if (DropDownListGenero.SelectedValue != "3")
+                            ObjEspecialista.Genero = DropDownListGenero.SelectedValue;
+                        else
+                            ObjEspecialista.Genero = (Genero1.Text == "Femenino") ? "0" : "1";
                         break;
+
                     default:return null;
                       
 

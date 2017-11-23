@@ -68,7 +68,7 @@
             </div>
             <div>
                 <h3>Alumno:</h3>
-                <asp:Label ID="LabelNombreAlumno" runat="server" Text=" " Font-Italic="True" Font-Bold="True" Font-Overline="False" Font-Underline="True" ></asp:Label>
+                <asp:Label ID="LabelNombreAlumno" runat="server" Text="" Font-Italic="True" Font-Bold="True" Font-Overline="False" Font-Underline="True" ></asp:Label>
             </div>
             <h3>Tipo de paciente</h3>
             <div class="row" style="font-size: medium">

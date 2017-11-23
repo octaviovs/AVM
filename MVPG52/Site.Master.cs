@@ -46,7 +46,7 @@ namespace MVPG52
                     }
                     if (objLoggerdUserEspecialista!=null)
                     {
-                        if (objLoggerdUserEspecialista.Rol == 2) {
+                        if (objLoggerdUserEspecialista.Rol == 2 && objLoggerdUserEspecialista.Activo=="1") {
                             MenuNombre.Text = objLoggerdUserEspecialista.Nombre+" "+objLoggerdUserEspecialista.Apellido;
                             TipoUsuario.Text = "Especialista";
                             //Activamos los botones del panel de alumno

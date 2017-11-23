@@ -63,7 +63,7 @@ namespace Core.Model
             lstParametros.Add(new SqlParameter("@Nombre", SqlDbType.VarChar) { Value = objEspecialista.Nombre });
             lstParametros.Add(new SqlParameter("@Apellido", SqlDbType.VarChar) { Value = objEspecialista.Apellido });
             lstParametros.Add(new SqlParameter("@FechaNacimiento", SqlDbType.VarChar) { Value = objEspecialista.FechaNacimiento });
-            lstParametros.Add(new SqlParameter("@Genero", SqlDbType.VarChar) { Value = objEspecialista.Genero });
+            lstParametros.Add(new SqlParameter("@Genero", SqlDbType.Int) { Value = objEspecialista.Genero });
             lstParametros.Add(new SqlParameter("@Direccion", SqlDbType.VarChar) { Value = objEspecialista.Direccion });
             lstParametros.Add(new SqlParameter("@Correo", SqlDbType.VarChar) { Value = objEspecialista.Correo });
             lstParametros.Add(new SqlParameter("@Telefono", SqlDbType.VarChar) { Value = objEspecialista.Telefono });

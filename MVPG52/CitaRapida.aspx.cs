@@ -199,6 +199,16 @@ namespace MVPG52
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Ingrese Id del pasiente');", true);
                 goto Fin;
             }
+            if (LabelNombreAlumno.Text == "")
+            {
+                Entro = false;
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", "alert('Ingrese Id del pasiente');", true);
+                goto Fin;
+            }
+
+
+            
+
 
             Fin:
             if (Entro)
